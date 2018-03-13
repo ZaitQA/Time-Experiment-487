@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 	{
 		cam = Camera.main;
 		motor = GetComponent<PlayerMotor>();
-		hp.text = life + " / " + maxlife;
+	
 	}
 
 	void Update()
@@ -57,8 +57,7 @@ public class PlayerController : MonoBehaviour
 
 		}
 
-		hp.text = life + " / " + maxlife;
-		hpslider.value = (float) life / maxlife;
+		
 
 	}
 
