@@ -20,6 +20,12 @@ public class PlayerController : MonoBehaviour
 
 	void Start()
 	{
+		Vector3 pos = new Vector3(105, 0, 105);
+		GameObject c = PhotonNetwork.Instantiate("Main Camera", pos, Quaternion.identity, 0);
+		c.GetComponent<AudioListener>().enabled = true;
+		c.GetComponent<CameraController>().enabled = true;
+		c.GetComponent<CameraController>().target = this.transform;
+		
 		cam = Camera.main;
 		motor = GetComponent<PlayerMotor>();
 		hp.text = life + " / " + maxlife;

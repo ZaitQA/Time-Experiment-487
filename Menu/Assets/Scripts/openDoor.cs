@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
-using UnityEditor;
 using UnityEngine;
 
 public class openDoor : MonoBehaviour {
@@ -25,7 +23,7 @@ public class openDoor : MonoBehaviour {
 	void Start ()
 	{
 		inv = new string[10];
-		Player = GameObject.Find("Player");
+		Player = GameObject.Find("Player(Clone)");
 		maxOpenz = door.position.z;
 		maxOpenx = door.position.x;
 	}
