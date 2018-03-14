@@ -8,32 +8,37 @@ public class PlayerController : MonoBehaviour
 {
 	private Camera cam;
 	public LayerMask mask;
+
 	private PlayerMotor motor;
-	public Text hp;
-	public Text cons;
+
+	//public Text hp;
+	//public Text cons;
 	private int life = 100;
+
 	private int maxlife = 100;
-	public Slider hpslider;
-	public GameObject deadText;
-	public GameObject porte;
-	public string[] inventaire;
+
+	//public Slider hpslider;
+	//public GameObject deadText;
+	private string[] inventaire = new string[10];
+
+	//private GameObject camA;
+
+	//private int nbPlayer;
 
 	void Start()
 	{
+
 		Vector3 pos = new Vector3(105, 0, 105);
 		GameObject c = PhotonNetwork.Instantiate("Main Camera", pos, Quaternion.identity, 0);
+		Debug.Log(c.name);
+
+		c.GetComponent<Camera>().enabled = true;
 		c.GetComponent<AudioListener>().enabled = true;
 		c.GetComponent<CameraController>().enabled = true;
 		c.GetComponent<CameraController>().target = this.transform;
-		
-		cam = Camera.main;
+		cam = c.GetComponent<Camera>();
 		motor = GetComponent<PlayerMotor>();
-		hp.text = life + " / " + maxlife;
-		inventaire = new string[10];
-		for (int i = 0; i < 10; i++)
-		{
-			inventaire[i] = "";
-		}
+		//hp.text = life + " / " + maxlife;
 	}
 
 	void Update()
@@ -54,7 +59,7 @@ public class PlayerController : MonoBehaviour
 			else
 			{
 				life = 0;
-				deadText.SetActive(true);
+				//deadText.SetActive(true);
 			}
 
 		}
@@ -69,8 +74,8 @@ public class PlayerController : MonoBehaviour
 
 		}
 
-		hp.text = life + " / " + maxlife;
-		hpslider.value = (float) life / maxlife;
+		//hp.text = life + " / " + maxlife;
+		//hpslider.value = (float) life / maxlife;
 
 	}
 
@@ -78,15 +83,16 @@ public class PlayerController : MonoBehaviour
 	{
 		if (other.tag == "key")
 		{
-			cons.text = "Appuyer sur F pour rammasser la clé " + other.name + ".";
+			//cons.text = "Appuyer sur F pour rammasser la clé " + other.name + ".";
 		}
 
 	}
+
 	private void OnTriggerExit(Collider other)
 	{
 		if (other.tag == "key")
 		{
-			cons.text = "";
+			//cons.text = "";
 		}
 
 	}
@@ -95,11 +101,17 @@ public class PlayerController : MonoBehaviour
 	{
 		if (other.tag == "key" && Input.GetKeyDown(KeyCode.F))
 		{
-			inventaire[0] = other.name;
+			if (inventaire.Length >= 1)
+				inventaire[0] = other.name;
 			other.gameObject.SetActive(false);
-			cons.text = "Tu as ramassé la clé " + inventaire[0];
-			
+			//cons.text = "Tu as ramassé la clé " + inventaire[0];
+
 		}
 
+	}
+	
+	public string[] Inventaire
+	{
+		get { return inventaire; }
 	}
 }

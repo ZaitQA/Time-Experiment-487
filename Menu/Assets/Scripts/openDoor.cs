@@ -23,7 +23,6 @@ public class openDoor : MonoBehaviour {
 	void Start ()
 	{
 		inv = new string[10];
-		Player = GameObject.Find("Player(Clone)");
 		maxOpenz = door.position.z;
 		maxOpenx = door.position.x;
 	}
@@ -43,8 +42,8 @@ public class openDoor : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other)
 	{
-		
-		inv = Player.GetComponent<PlayerController>().inventaire;
+		if(other.tag == "Player")
+			inv = other.GetComponent<PlayerController>().Inventaire;
 		if (other.tag == "Player" && tag == "Porte" && !secure || secure && SearchKey(inv, key))
 		{
 			Debug.Log("entree");
@@ -54,7 +53,7 @@ public class openDoor : MonoBehaviour {
 		}
 		else if(secure)
 		{
-			Player.GetComponent<PlayerController>().cons.text = "Tu as besoin de " + key;
+			//Player.GetComponent<PlayerController>().cons.text = "Tu as besoin de " + key;
 		}
 
 		
@@ -67,7 +66,7 @@ public class openDoor : MonoBehaviour {
 			Debug.Log("Exit");
 			opening = false;
 			closing = true;
-			Player.GetComponent<PlayerController>().cons.text = "";
+			//Player.GetComponent<PlayerController>().cons.text = "";
 		}
 	}
 

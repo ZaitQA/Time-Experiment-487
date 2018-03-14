@@ -6,6 +6,7 @@ public class Manager : MonoBehaviour
 {
 
 
+	public int nbPlayer = 0;
 	void Start()
 	{
 		PhotonNetwork.ConnectUsingSettings("0.1");
@@ -26,6 +27,7 @@ public class Manager : MonoBehaviour
 
 	void OnJoinedRoom()
 	{
+		//nbPlayer += 1;
 		Vector3 pos = new Vector3(105, 0, 105);
 		Debug.Log("Joined room");
 		GameObject j = PhotonNetwork.Instantiate("Player", pos, Quaternion.identity, 0);
