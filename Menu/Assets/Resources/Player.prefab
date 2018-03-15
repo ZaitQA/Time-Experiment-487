@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 114713861232038390}
   - component: {fileID: 114648485832647116}
   - component: {fileID: 65926135667191240}
+  - component: {fileID: 114659982508134178}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -284,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a27fc2613a2a447ab81fa9eb1bf765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 257
@@ -292,6 +294,18 @@ MonoBehaviour:
   consT: {fileID: 0}
   hpslider: {fileID: 0}
   deadText: {fileID: 0}
+  inventaire:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  index: 0
 --- !u!114 &114648485832647116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -303,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5bd65f7deef1a4488160d29eddb4c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 0
@@ -311,9 +326,34 @@ MonoBehaviour:
   consT: {fileID: 0}
   hpslider: {fileID: 0}
   deadText: {fileID: 0}
+  inventaire:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  index: 0
+  count: 0
   TimerA: 0
   TimerS: 0
-  TimerT: 0
+--- !u!114 &114659982508134178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822482093968612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0c73e427812074994ea12c96c178c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inv: []
+  index: 0
 --- !u!114 &114660067311929108
 MonoBehaviour:
   m_ObjectHideFlags: 1

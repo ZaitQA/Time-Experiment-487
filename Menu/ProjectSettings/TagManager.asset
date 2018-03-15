@@ -8,6 +8,7 @@ TagManager:
   - Porte
   - key
   - fire
+  - fouille
   layers:
   - Default
   - TransparentFX

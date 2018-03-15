@@ -8,6 +8,7 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="LoadScene.cs" t="Include" />
         <e p="Photon Unity Networking" t="Include">
           <e p="changelog.txt" t="Include" />
           <e p="Editor" t="Include">
@@ -135,6 +136,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="CameraController.cs" t="Include" />
+          <e p="Fouille.cs" t="Include" />
           <e p="Manager.cs" t="Include" />
           <e p="MENU.cs" t="Include" />
           <e p="Menuprincipal.cs" t="Include" />

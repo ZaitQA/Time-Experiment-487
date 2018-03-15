@@ -22,7 +22,6 @@ public class openDoor : MonoBehaviour {
 	
 	void Start ()
 	{
-		inv = new string[10];
 		maxOpenz = door.position.z;
 		maxOpenx = door.position.x;
 	}
@@ -51,7 +50,7 @@ public class openDoor : MonoBehaviour {
 			opening = true;
 			closing = false;
 		}
-		else if(secure && other.GetComponent<PlayerController>().consT != null)
+		else if(secure && other.tag == "Player" && other.GetComponent<PlayerController>().consT != null)
 		{
 			other.GetComponent<PlayerController>().consT.text = "Tu as besoin de " + key;
 		}

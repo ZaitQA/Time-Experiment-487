@@ -17579,8 +17579,8 @@ GameObject:
   - component: {fileID: 1009171979}
   - component: {fileID: 1009171978}
   m_Layer: 0
-  m_Name: Armoire3 (1)
-  m_TagString: Untagged
+  m_Name: Potion
+  m_TagString: fouille
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17624,11 +17624,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1009171976}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.443695, y: 5.3405495, z: 2.5820847}
-  m_Center: {x: -0.27635193, y: 1.184454, z: 0.26353073}
+  m_Size: {x: 4.443695, y: 5.3405495, z: 3.93}
+  m_Center: {x: -0.27635193, y: 1.184454, z: 1.06}
 --- !u!95 &1009171980
 Animator:
   serializedVersion: 3
@@ -23184,8 +23184,8 @@ GameObject:
   - component: {fileID: 1415166907}
   - component: {fileID: 1415166906}
   m_Layer: 0
-  m_Name: Armoire2
-  m_TagString: Untagged
+  m_Name: Pistolet
+  m_TagString: fouille
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23229,11 +23229,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1415166904}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4.443695, y: 5.3405495, z: 2.5820847}
-  m_Center: {x: -0.27635193, y: 1.184454, z: 0.26353073}
+  m_Center: {x: -0.27635193, y: 1.184454, z: 2.43}
 --- !u!95 &1415166908
 Animator:
   serializedVersion: 3
@@ -26544,8 +26544,8 @@ GameObject:
   - component: {fileID: 1979433762}
   - component: {fileID: 1979433761}
   m_Layer: 0
-  m_Name: Armoire3
-  m_TagString: Untagged
+  m_Name: Rien
+  m_TagString: fouille
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26589,11 +26589,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1979433759}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4.443695, y: 5.3405495, z: 2.5820847}
-  m_Center: {x: -0.27635193, y: 1.184454, z: 0.26353073}
+  m_Center: {x: -0.27635193, y: 1.09, z: 1.94}
 --- !u!95 &1979433763
 Animator:
   serializedVersion: 3
@@ -27208,8 +27208,8 @@ GameObject:
   - component: {fileID: 2029613648}
   - component: {fileID: 2029613649}
   m_Layer: 0
-  m_Name: Armoire1
-  m_TagString: Untagged
+  m_Name: Rien
+  m_TagString: fouille
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27256,11 +27256,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2029613645}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4.443695, y: 5.3405495, z: 2.5820847}
-  m_Center: {x: -0.27635193, y: 1.184454, z: 0.26353073}
+  m_Center: {x: -0.27635193, y: 1.184454, z: 2.01}
 --- !u!208 &2029613649
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -28122,7 +28122,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2140624173}
-  - component: {fileID: 2140624174}
   m_Layer: 0
   m_Name: SalleOpe
   m_TagString: Untagged
@@ -28149,21 +28148,6 @@ Transform:
   m_Father: {fileID: 1512647843}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!208 &2140624174
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2140624172}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &2142994633
 GameObject:
   m_ObjectHideFlags: 0

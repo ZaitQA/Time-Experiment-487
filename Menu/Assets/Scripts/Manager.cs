@@ -27,10 +27,12 @@ public class Manager : MonoBehaviour
 
 	void OnJoinedRoom()
 	{
-		//nbPlayer += 1;
+		nbPlayer += 1;
 		Vector3 pos = new Vector3(105, 0, 105);
 		Debug.Log("Joined room");
 		GameObject j = PhotonNetwork.Instantiate("Player", pos, Quaternion.identity, 0);
+		j.name = "Player" + nbPlayer;
+		j.GetComponent<Fouille>().enabled = true;
 		j.GetComponent<PlayerController>().enabled = true;
 		j.GetComponent<PlayerMotor>().enabled = true;
 		j.GetComponent<SpellController>().enabled = true;

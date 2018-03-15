@@ -15,6 +15,11 @@ public class SpellController : PlayerController
 	private static bool Accelerate;
 	private float Speed2; 
 	private float Accelerate2;
+	public int count = 0;
+	private float dis;
+	private GameObject j;
+	private GameObject p;
+	private Camera cam1;
 	
 	void Start ()
 	{
@@ -25,7 +30,7 @@ public class SpellController : PlayerController
 	
 	public float TimerA;
 	public float TimerS;
-	public float TimerT;
+	
 	
 	void Update () 
 	
@@ -46,7 +51,7 @@ public class SpellController : PlayerController
 		if (Input.GetKey(KeyCode.Keypad1))
 		{
 			Teleport = true;
-			TimerT = 5.0f;
+			
 		}
 		if (Input.GetKey(KeyCode.Keypad2))
 		{
@@ -99,23 +104,41 @@ public class SpellController : PlayerController
 
 	public void FuncTeleport()
 	{
+	
 		if (Teleport)
 		{
-			if (TimerT > 0)
+			
+			if (Input.GetMouseButton(0))
 			{
-				GetComponent<NavMeshAgent>().speed = 5000;
-				GetComponent<NavMeshAgent>().acceleration = 10000;
-
+				cam1 = GetComponent<PlayerController>().cam;
+				Debug.Log(cam1.name);
+				Ray ray = cam1.ScreenPointToRay(Input.mousePosition);
+				RaycastHit hit;
+				if (Physics.Raycast(ray, out hit))
+				{
+					dis = Vector3.Distance(hit.point, transform.position);
+					Debug.Log(dis);
+					
+				}
+				if (dis < 10)
+				{
+					GetComponent<NavMeshAgent>().speed = 5000;
+					GetComponent<NavMeshAgent>().acceleration = 10000;
+					count += 1;
+				}
+				
 			}
-			if (TimerT <= 0)
+			if (count > 1)
 			{
 				Teleport = false;
-				GetComponent<NavMeshAgent>().speed = Speed2;
-				GetComponent<NavMeshAgent>().acceleration = Accelerate2;
-
 			}
-			TimerT -= Time.deltaTime;
 			
+		}
+		if (Teleport == false)
+		{
+			count = 0;
+			GetComponent<NavMeshAgent>().speed = Speed2;
+			GetComponent<NavMeshAgent>().acceleration = Accelerate2;
 		}
 	}
 
