@@ -51,9 +51,9 @@ public class openDoor : MonoBehaviour {
 			opening = true;
 			closing = false;
 		}
-		else if(secure)
+		else if(secure && other.GetComponent<PlayerController>().consT != null)
 		{
-			//Player.GetComponent<PlayerController>().cons.text = "Tu as besoin de " + key;
+			other.GetComponent<PlayerController>().consT.text = "Tu as besoin de " + key;
 		}
 
 		
@@ -66,7 +66,7 @@ public class openDoor : MonoBehaviour {
 			Debug.Log("Exit");
 			opening = false;
 			closing = true;
-			//Player.GetComponent<PlayerController>().cons.text = "";
+			other.GetComponent<PlayerController>().consT.text = "";
 		}
 	}
 

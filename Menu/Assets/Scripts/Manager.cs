@@ -44,6 +44,11 @@ public class Manager : MonoBehaviour
 		PhotonNetwork.CreateRoom("Room");
 	}
 
+	public void Quit()
+	{
+		PhotonNetwork.Disconnect();
+	}
+
 	
 	
 }

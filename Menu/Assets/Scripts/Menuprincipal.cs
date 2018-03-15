@@ -7,19 +7,28 @@ public class Menuprincipal : MonoBehaviour
 
 
 {
+    
     public void PlayGame()
     {
-        SceneManager.LoadScene("Niveau1E-3");
+        SceneManager.LoadScene(0);
     }
     
     public void LevelMenu()
     {
-        SceneManager.LoadScene("level");
+        SceneManager.LoadScene(2);
+        Debug.Log(SceneManager.sceneCount);
     }
 
     public void BackMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
+
+    }
+
+    public void BackMenuFromGame()
+    {
+        GameObject.Find("Manager").GetComponent<Manager>().Quit();
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()

@@ -11,18 +11,27 @@ public class PlayerController : MonoBehaviour
 
 	private PlayerMotor motor;
 
-	//public Text hp;
-	//public Text cons;
+	private GameObject HP;
+	public Text hp;
+	
+	public GameObject cons;
+
+	public Text consT;
 	private int life = 100;
 
 	private int maxlife = 100;
 
-	//public Slider hpslider;
-	//public GameObject deadText;
+	private GameObject HPslider;
+	public Slider hpslider;
+	
+	public GameObject deadText;
+	private Text dead;
+	
 	private string[] inventaire = new string[10];
 
-	//private GameObject camA;
+	private GameObject m;
 
+	private float timer = 0;
 	//private int nbPlayer;
 
 	void Start()
@@ -30,19 +39,47 @@ public class PlayerController : MonoBehaviour
 
 		Vector3 pos = new Vector3(105, 0, 105);
 		GameObject c = PhotonNetwork.Instantiate("Main Camera", pos, Quaternion.identity, 0);
-		Debug.Log(c.name);
 
+
+
+		m = PhotonNetwork.Instantiate("Canvas", pos, Quaternion.identity, 0);
+		m.SetActive(true);
+		
+		hpslider = GameObject.Find("Slider").GetComponent<Slider>();
+		consT = GameObject.Find("cons").GetComponent<Text>();
+		hp = GameObject.Find("hp").GetComponent<Text>();
+		/*HPslider = PhotonNetwork.Instantiate("Slider", new Vector3(250, 50, 0), Quaternion.identity, 0);
+		HPslider.transform.SetParent(m.transform, false);
+		hpslider = HPslider.GetComponent<Slider>();
+		
+		cons = PhotonNetwork.Instantiate("cons", pos, Quaternion.identity, 0);
+		cons.transform.SetParent(m.transform, false);
+		consT = cons.GetComponent<Text>();*/
+		
+		deadText = PhotonNetwork.Instantiate("Dead", pos, Quaternion.identity, 0);
+		deadText.transform.SetParent(m.transform, false);
+		dead = deadText.GetComponent<Text>();
+		
+		/*HP = PhotonNetwork.Instantiate("hp", new Vector3(250, 50, 0), Quaternion.identity, 0);
+		HP.transform.SetParent(m.transform, false);
+		hp = HP.GetComponent<Text>();*/
+		
 		c.GetComponent<Camera>().enabled = true;
 		c.GetComponent<AudioListener>().enabled = true;
 		c.GetComponent<CameraController>().enabled = true;
 		c.GetComponent<CameraController>().target = this.transform;
 		cam = c.GetComponent<Camera>();
 		motor = GetComponent<PlayerMotor>();
-		//hp.text = life + " / " + maxlife;
+		hp.text = life + " / " + maxlife;
 	}
 
 	void Update()
 	{
+
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			m.GetComponent<MENU>().ResumeBut();
+		}﻿
 		if (Input.GetMouseButton(0))
 		{
 			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -59,7 +96,7 @@ public class PlayerController : MonoBehaviour
 			else
 			{
 				life = 0;
-				//deadText.SetActive(true);
+				deadText.SetActive(true);
 			}
 
 		}
@@ -71,43 +108,70 @@ public class PlayerController : MonoBehaviour
 			{
 				life = maxlife;
 			}
-
+		}
+		
+		if (life >= maxlife)
+		{
+			life = maxlife;
+		}
+		else if (life <= 0)
+		{
+			life = 0;
+			Dead();
 		}
 
-		//hp.text = life + " / " + maxlife;
-		//hpslider.value = (float) life / maxlife;
+		hp.text = life + " / " + maxlife;
+		hpslider.value = (float) life / maxlife;
 
 	}
-
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "key")
+		if (other.tag == "key" && consT != null)
 		{
-			//cons.text = "Appuyer sur F pour rammasser la clé " + other.name + ".";
+
+			consT.text = "Appuyer sur F pour rammasser la clé " + other.name;
 		}
+		
 
 	}
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (other.tag == "key")
+		if (other.tag == "key" && consT != null)
 		{
-			//cons.text = "";
+			consT.text = "";
 		}
 
 	}
 
 	private void OnTriggerStay(Collider other)
 	{
-		if (other.tag == "key" && Input.GetKeyDown(KeyCode.F))
+		if (other.tag == "key" && Input.GetKeyDown(KeyCode.F) && consT != null)
 		{
 			if (inventaire.Length >= 1)
 				inventaire[0] = other.name;
 			other.gameObject.SetActive(false);
-			//cons.text = "Tu as ramassé la clé " + inventaire[0];
+			consT.text = "Tu as ramassé la clé " + inventaire[0];
 
 		}
+		if (other.tag == "fire")
+		{
+			timer += Time.deltaTime;
+			if (timer >= 0.5)
+			{
+				timer = 0;
+				life -= 1;
+			}
+		}
 
+	}
+
+	private void Dead()
+	{
+		deadText.SetActive(true);
+		Cursor.visible = true;
+		Cursor.lockState = CursorLockMode.Confined;
+		Time.timeScale = 0;
 	}
 	
 	public string[] Inventaire
