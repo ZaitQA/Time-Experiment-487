@@ -10,25 +10,25 @@ public class Menuprincipal : MonoBehaviour
     
     public void PlayGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
     
     public void LevelMenu()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
         Debug.Log(SceneManager.sceneCount);
     }
 
     public void BackMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
 
     }
 
     public void BackMenuFromGame()
     {
         GameObject.Find("Manager").GetComponent<Manager>().Quit();
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public void QuitGame()

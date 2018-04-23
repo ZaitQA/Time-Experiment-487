@@ -18,16 +18,22 @@ public class PlayerController : MonoBehaviour
 
 	public Text consT;
 	private int life = 100;
+	public int energieV = 100;
 
 	private int maxlife = 100;
+	private int maxenergie = 100;
 
-	private GameObject HPslider;
-	public Slider hpslider;
+
+	private GameObject miniMap;
+	private GameObject vieSlider;
+	private GameObject energieSlider;
+	public Slider vie;
+	public Slider energie;
 	
-	public GameObject deadText;
+	private GameObject deadText;
 	private Text dead;
 	
-	public string[] inventaire = new string[10];
+	public string[] inventaire = new string[20];
 	public int index = 0;
 	private GameObject m;
 
@@ -50,30 +56,26 @@ public class PlayerController : MonoBehaviour
 		m = PhotonNetwork.Instantiate("Canvas", pos, Quaternion.identity, 0);
 		m.name = "Canvas" + nbPlayer;
 		m.SetActive(true);
+
+		miniMap = GameObject.Find("RawImage");
+//		miniMap.transform.SetParent(m.transform, false);
 		
-		hpslider = GameObject.Find("Slider").GetComponent<Slider>();
-		hpslider.name = "Slider" + nbPlayer;
 		consT = GameObject.Find("cons").GetComponent<Text>();
 		consT.name = "con" + nbPlayer;
-		hp = GameObject.Find("hp").GetComponent<Text>();
-		hp.name = "hp" + nbPlayer;
 
-		/*HPslider = PhotonNetwork.Instantiate("Slider", new Vector3(250, 50, 0), Quaternion.identity, 0);
-		HPslider.transform.SetParent(m.transform, false);
-		hpslider = HPslider.GetComponent<Slider>();
+		vieSlider = PhotonNetwork.Instantiate("Vie", new Vector3(250, 50, 0), Quaternion.identity, 0);
+		vieSlider.transform.SetParent(m.transform, false);
+		vie = vieSlider.GetComponent<Slider>();
 		
-		cons = PhotonNetwork.Instantiate("cons", pos, Quaternion.identity, 0);
-		cons.transform.SetParent(m.transform, false);
-		consT = cons.GetComponent<Text>();*/
+		energieSlider = PhotonNetwork.Instantiate("Energie", new Vector3(250, 85, 0), Quaternion.identity, 0);
+		energieSlider.transform.SetParent(m.transform, false);
+		energie = energieSlider.GetComponent<Slider>();
+
 		
 		deadText = PhotonNetwork.Instantiate("Dead", pos, Quaternion.identity, 0);
 		deadText.transform.SetParent(m.transform, false);
 		dead = deadText.GetComponent<Text>();
-		dead.name = "Dead" + nbPlayer;
-		
-		/*HP = PhotonNetwork.Instantiate("hp", new Vector3(250, 50, 0), Quaternion.identity, 0);
-		HP.transform.SetParent(m.transform, false);
-		hp = HP.GetComponent<Text>();*/
+		deadText.name = "Dead" + nbPlayer;
 		
 		c.GetComponent<Camera>().enabled = true;
 		c.GetComponent<AudioListener>().enabled = true;
@@ -81,11 +83,11 @@ public class PlayerController : MonoBehaviour
 		c.GetComponent<CameraController>().target = transform;
 		cam = c.GetComponent<Camera>();
 		motor = GetComponent<PlayerMotor>();
-		hp.text = life + " / " + maxlife;
 	}
 
 	void Update()
 	{
+
 		if (deadd)
 		{
 			deadText.SetActive(true);
@@ -95,7 +97,7 @@ public class PlayerController : MonoBehaviour
 		}
 		else
 		{
-			deadText.SetActive(false);
+//			deadText.SetActive(false);
 			Cursor.visible = true;
 			Time.timeScale = 1;
 			if (Input.GetKeyDown(KeyCode.Escape))
@@ -142,9 +144,23 @@ public class PlayerController : MonoBehaviour
 				deadd = true;
 			}
 
-			hp.text = life + " / " + maxlife;
-			hpslider.value = (float) life / maxlife;
+				vie.value = (float) life / maxlife;
+				energie.value = (float) energieV / maxenergie;
+			
 
+		}
+	}
+
+	private void OnTriggerStay(Collider other)
+	{
+		if (other.tag == "fire")
+		{
+			timer += Time.deltaTime;
+			if (timer >= 0.5)
+			{
+				timer = 0;
+				life -= 1;
+			}
 		}
 	}
 
@@ -223,4 +239,23 @@ public class PlayerController : MonoBehaviour
 	{
 		get { return inventaire; }
 	}
+
+	public int Index
+	{
+		get { return index; }
+		set { index = value; }
+	}
 }
+
+//vie.name = "Vie" + nbPlayer;
+//energieSlider.name = "Energie" + nbPlayer;
+
+		
+/*cons = PhotonNetwork.Instantiate("cons", pos, Quaternion.identity, 0);
+cons.transform.SetParent(m.transform, false);
+consT = cons.GetComponent<Text>();*/
+
+		
+/*HP = PhotonNetwork.Instantiate("hp", new Vector3(250, 50, 0), Quaternion.identity, 0);
+HP.transform.SetParent(m.transform, false);
+hp = HP.GetComponent<Text>();*/

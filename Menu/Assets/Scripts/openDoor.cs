@@ -31,7 +31,6 @@ public class openDoor : MonoBehaviour {
 	{
 		if (opening)
 		{
-			Debug.Log("is opening");
 			OpenDoor();
 		}
 		if(closing)
@@ -45,7 +44,6 @@ public class openDoor : MonoBehaviour {
 			inv = other.GetComponent<PlayerController>().Inventaire;
 		if (other.tag == "Player" && tag == "Porte" && !secure || secure && SearchKey(inv, key))
 		{
-			Debug.Log("entree");
 			secure = false;
 			opening = true;
 			closing = false;
@@ -60,9 +58,8 @@ public class openDoor : MonoBehaviour {
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (other.tag == "Player" && tag == "Porte")
+		if (other.tag == "Player" && tag == "Porte" && other.GetComponent<PlayerController>().consT != null)
 		{
-			Debug.Log("Exit");
 			opening = false;
 			closing = true;
 			other.GetComponent<PlayerController>().consT.text = "";
@@ -71,12 +68,13 @@ public class openDoor : MonoBehaviour {
 
 	private bool SearchKey(string[] array, string Key)
 	{
-		for (int i = 0; i < array.Length; i++)
-		{
-			Debug.Log(array[i] + " " + Key);
-			if (array[i] == Key)
-				return true;
-		}
+		if(array != null)
+			for (int i = 0; i < array.Length; i++)
+			{
+				Debug.Log(array[i] + " " + Key);
+				if (array[i] == Key)
+					return true;
+			}
 		return false;
 	}
 

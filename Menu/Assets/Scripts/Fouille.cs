@@ -8,7 +8,7 @@ public class Fouille : MonoBehaviour
 
 	private Text consT;
 	public string[] inv;
-	public int index;
+	public int index = 0;
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -29,31 +29,30 @@ public class Fouille : MonoBehaviour
 	{
 		consT = GetComponent<PlayerController>().consT;
 		inv = GetComponent<PlayerController>().inventaire;
-		index = GetComponent<PlayerController>().index;
-		
 		if (other.tag == "fouille" && tag == "Player" && other.name == "Rien" && consT != null && Input.GetKeyDown(KeyCode.F))
 		{
 			consT.text = "Il n'y a rien à l'intérieur ...";
 		}
 		else if (other.tag == "fouille" && tag == "Player" && other.name != "Rien" && consT != null &&
-		         Input.GetKeyDown(KeyCode.F))
+		         Input.GetKeyDown(KeyCode.F) && inv != null && index != null)
 		{
-			if (inv.Length >= 1)
-			{
+
+				other.GetComponent<Collider>().gameObject.SetActive(false);
+				Debug.Log(index);
 				inv[index] = other.name;
 				index += 1;
-			}
-			consT.text = "Tu as trouvé " + other.name;
+				Debug.Log(index);
+				consT.text = "Tu as trouvé " + other.name;
 		}
-		else if (other.tag == "key" && Input.GetKeyDown(KeyCode.R) && consT != null)
+		else if (other.tag == "key" && Input.GetKeyDown(KeyCode.R) && consT != null  && inv != null && index != null)
 		{
-			if (inv.Length >= 1)
-			{
+
+				Debug.Log(index);
 				inv[index] = other.name;
 				index += 1;
-			}
-			other.gameObject.SetActive(false);
-			consT.text = "Tu as ramassé la clé " + other.name;
+				other.gameObject.SetActive(false);
+				Debug.Log(index);
+				consT.text = "Tu as ramassé la clé " + other.name;
 
 		}
 		

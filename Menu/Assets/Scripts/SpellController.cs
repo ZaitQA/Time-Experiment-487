@@ -51,18 +51,21 @@ public class SpellController : PlayerController
 		if (Input.GetKey(KeyCode.Keypad1))
 		{
 			Teleport = true;
-			
+			energieV -= 20;
+
 		}
 		if (Input.GetKey(KeyCode.Keypad2))
 		{
 			Accelerate = true;
 			TimerA = 5.0f;
+			energieV -= 15;
 		}
 		
 		if (Input.GetKey(KeyCode.Keypad3))
 		{
 			stune = true;
 			TimerS = 5.0f;
+			energieV -= 25;
 		}
 	}
 	
@@ -111,13 +114,11 @@ public class SpellController : PlayerController
 			if (Input.GetMouseButton(0))
 			{
 				cam1 = GetComponent<PlayerController>().cam;
-				Debug.Log(cam1.name);
 				Ray ray = cam1.ScreenPointToRay(Input.mousePosition);
 				RaycastHit hit;
 				if (Physics.Raycast(ray, out hit))
 				{
 					dis = Vector3.Distance(hit.point, transform.position);
-					Debug.Log(dis);
 					
 				}
 				if (dis < 10)
