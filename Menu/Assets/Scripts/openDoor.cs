@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class openDoor : MonoBehaviour {
@@ -31,10 +32,10 @@ public class openDoor : MonoBehaviour {
 	{
 		if (opening)
 		{
-			OpenDoor();
+			PhotonView.Get(this).RPC("OpenDoor", PhotonTargets.All);
 		}
 		if(closing)
-			CloseDoor();
+			PhotonView.Get(this).RPC("CloseDoor", PhotonTargets.All);
 
 	}
 
@@ -52,8 +53,7 @@ public class openDoor : MonoBehaviour {
 		{
 			other.GetComponent<PlayerController>().consT.text = "Tu as besoin de " + key;
 		}
-
-		
+		PhotonView.Get(other.gameObject).RPC("OTE", PhotonTargets.All, other);
 	}
 
 	private void OnTriggerExit(Collider other)
@@ -78,13 +78,32 @@ public class openDoor : MonoBehaviour {
 		return false;
 	}
 
+	[PunRPC]
+	private void OTE(Collider other)
+	{
+		if(other.tag == "Player")
+			inv = other.GetComponent<PlayerController>().Inventaire;
+		if (other.tag == "Player" && tag == "Porte" && !secure || secure && SearchKey(inv, key))
+		{
+			secure = false;
+			opening = true;
+			closing = false;
+		}
+		else if(secure && other.tag == "Player" && other.GetComponent<PlayerController>().consT != null)
+		{
+			other.GetComponent<PlayerController>().consT.text = "Tu as besoin de " + key;
+		}
+	}
+	
+	[PunRPC]
 	private void OpenDoor()
 	{
+		
 		if (!cote)
 		{
 			if (door.position.z <= maxOpenz + 4)
 			{
-
+				
 				move = 0.5f * Time.deltaTime * speed;
 
 				door.position = new Vector3(
@@ -110,7 +129,9 @@ public class openDoor : MonoBehaviour {
 			}
 			else opening = false;
 		}
-}
+	}
+	
+	[PunRPC]
 	private void CloseDoor()
 	{
 		if(!cote)

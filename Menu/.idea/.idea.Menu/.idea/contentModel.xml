@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Jérémie\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_Menu.-1103922876.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Jérémie\Documents\GitHub\Time-Experiment-487\Menu" t="IncludeRecursive">
+    <e p="C:\Users\nicoletriso\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_Menu.354982256.00" t="ExcludeRecursive" />
+    <e p="C:\Users\nicoletriso\Documents\GitHub\Time-Experiment-487\Menu" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -146,9 +146,12 @@
           <e p="openDoor.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="PlayerMotor.cs" t="Include" />
+<<<<<<< HEAD
           <e p="Rotator.cs" t="Include" />
           <e p="SpawnLaser.cs" t="Include" />
           <e p="SpellController.cs" t="Include" />
+=======
+>>>>>>> 861694cc02b05fe1fb4b50a8f36d2b2308ad890e
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">

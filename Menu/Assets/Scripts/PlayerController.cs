@@ -17,8 +17,8 @@ public class PlayerController : MonoBehaviour
 	public GameObject cons;
 
 	public Text consT;
-	private int life = 100;
-	public int energieV = 100;
+	public float life = 100;
+	public float energieV;
 
 	private int maxlife = 100;
 	private int maxenergie = 100;
@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
 	void Start()
 	{
 
+		
 		Debug.Log(nbPlayer);
 		nbPlayer = GameObject.Find("Manager").GetComponent<Manager>().nbPlayer;
 		Vector3 pos = new Vector3(105, 0, 105);
