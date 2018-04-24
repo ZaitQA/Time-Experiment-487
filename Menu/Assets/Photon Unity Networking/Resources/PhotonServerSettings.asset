@@ -40,4 +40,5 @@ MonoBehaviour:
   - CloseDoor
   - ColorChange
   - Keyy
+  - OTE
   DisableAutoOpenWizard: 1

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
-
-
 	public int nbPlayer = 0;
 	public Vector3 posi;
 	void Start()
@@ -36,8 +34,6 @@ public class Manager : MonoBehaviour
 		j.GetComponent<Fouille>().enabled = true;
 		j.GetComponent<PlayerController>().enabled = true;
 		j.GetComponent<PlayerMotor>().enabled = true;
-		j.GetComponent<SpellController>().enabled = true;
-
 
 	}
 	
