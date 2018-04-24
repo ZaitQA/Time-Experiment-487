@@ -36,9 +36,6 @@ MonoBehaviour:
   - PunRespawn
   - RequestForPickupItems
   - RequestForPickupTimes
-  - OpenDoor
   - CloseDoor
-  - ColorChange
-  - Keyy
-  - OTE
+  - OpenDoor
   DisableAutoOpenWizard: 1

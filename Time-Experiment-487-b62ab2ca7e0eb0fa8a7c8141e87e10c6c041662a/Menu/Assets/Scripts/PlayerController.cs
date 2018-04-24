@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : PlayerStat
 {
 	public Camera cam;
 	public LayerMask mask;
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject cons;
 
 	public Text consT;
-	public float life = 100;
+	public float life;
 	public float energieV;
 
 	private int maxlife = 100;
@@ -44,7 +44,8 @@ public class PlayerController : MonoBehaviour
 	void Start()
 	{
 
-		
+		life = GetComponent<PlayerStat>().Life;
+		energieV = GetComponent<PlayerStat>().energie;
 		Debug.Log(nbPlayer);
 		nbPlayer = GameObject.Find("Manager").GetComponent<Manager>().nbPlayer;
 		Vector3 pos = new Vector3(105, 0, 105);

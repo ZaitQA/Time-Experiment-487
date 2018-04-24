@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
+
+
 	public int nbPlayer = 0;
 	public Vector3 posi;
 	void Start()
@@ -31,9 +33,13 @@ public class Manager : MonoBehaviour
 		Debug.Log("Joined room");
 		GameObject j = PhotonNetwork.Instantiate("Player", posi, Quaternion.identity, 0);
 		j.name = "Player" + nbPlayer;
+		
+		j.GetComponent<PlayerStat>().enabled = true;
 		j.GetComponent<Fouille>().enabled = true;
 		j.GetComponent<PlayerController>().enabled = true;
 		j.GetComponent<PlayerMotor>().enabled = true;
+		j.GetComponent<SpellController>().enabled = true;
+	
 
 	}
 	

@@ -296,13 +296,13 @@ GameObject:
   - component: {fileID: 23789598951551434}
   - component: {fileID: 195936581196998900}
   - component: {fileID: 54419135968379166}
+  - component: {fileID: 114165451560486966}
   - component: {fileID: 114847602098567620}
   - component: {fileID: 114142660945217480}
   - component: {fileID: 114004953520099032}
-  - component: {fileID: 114245774569263872}
   - component: {fileID: 65108763437382384}
   - component: {fileID: 114306748334034450}
-  - component: {fileID: 114515323571983062}
+  - component: {fileID: 114391371007516908}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1404,7 +1404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950e65e0f1d85974fb61afacb906195c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114245774569263872
+--- !u!114 &114165451560486966
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1412,7 +1412,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1649737272920650}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5bd65f7deef1a4488160d29eddb4c10, type: 3}
+  m_Script: {fileID: 11500000, guid: d158ac3f9898b494aade7f1e039fa61a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 0
@@ -1422,9 +1422,8 @@ MonoBehaviour:
   TimerA: 0
   speed: 0
   Nbteleport: 0
-  energie: NaN
+  energie: 0
   "NbrCOmp\xE9tence": 0
-  count: 0
 --- !u!114 &114306748334034450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1438,15 +1437,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inv: []
   index: 0
---- !u!114 &114515323571983062
+--- !u!114 &114391371007516908
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1649737272920650}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9652f71643ad42841b1c91b41639bad2, type: 3}
+  m_Script: {fileID: 11500000, guid: a79cd50ee11ef3c4398d7a1e49779ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 0
@@ -1458,6 +1457,7 @@ MonoBehaviour:
   Nbteleport: 0
   energie: 0
   "NbrCOmp\xE9tence": 0
+  count: 0
 --- !u!114 &114847602098567620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1476,7 +1476,7 @@ MonoBehaviour:
   TimerA: 0
   speed: 0
   Nbteleport: 0
-  energie: NaN
+  energie: 0
   "NbrCOmp\xE9tence": 0
   cam: {fileID: 0}
   mask:
@@ -1485,7 +1485,7 @@ MonoBehaviour:
   hp: {fileID: 0}
   cons: {fileID: 0}
   consT: {fileID: 0}
-  life: 0
+  life: 100
   energieV: 100
   vie: {fileID: 0}
   energie: {fileID: 0}

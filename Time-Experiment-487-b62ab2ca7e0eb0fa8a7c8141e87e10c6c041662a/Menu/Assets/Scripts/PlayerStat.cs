@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UI;
+﻿using UnityEngine;
+
 
 public class PlayerStat : MonoBehaviour
 {
-
 	public float attack;
 	public float defence;
 	public float TimerS;
@@ -64,7 +60,7 @@ public class PlayerStat : MonoBehaviour
 	{
 		if (NbrCOmpétence >= 1)
 		{
-			attackadd += 1;
+			attackadd = PlayerPrefs.GetInt("Attack", 0);
 			NbrCOmpétence -= 1;
 		}
 	}

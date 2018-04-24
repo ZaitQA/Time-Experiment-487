@@ -51,27 +51,18 @@ public class Fouille : MonoBehaviour
 				inv[index] = other.name;
 				index += 1;
 				other.gameObject.SetActive(false);
-				//PhotonView.Get(GameObject.Find("Salle d'opération")).RPC("Keyy", PhotonTargets.All, other);
-				//PhotonView.Get(other.gameObject).RPC("Keyy", PhotonTargets.All, other);
 				Debug.Log(index);
 				consT.text = "Tu as ramassé la clé " + other.name;
 
 		}
+		
+
 	}
-	
 
 	private void OnTriggerExit(Collider other)
 	{
 		consT = GetComponent<PlayerController>().consT;
 		if ((other.tag == "fouille" || other.tag == "key") && consT != null)
 			consT.text = "";
-	}
-	
-	[PunRPC]
-	private void Keyy(Collider other)
-	{
-		
-		PhotonNetwork.Destroy(other.gameObject);
-		other.gameObject.SetActive(false);
 	}
 }
