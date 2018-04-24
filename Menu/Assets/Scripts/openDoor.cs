@@ -53,8 +53,7 @@ public class openDoor : MonoBehaviour {
 		{
 			other.GetComponent<PlayerController>().consT.text = "Tu as besoin de " + key;
 		}
-
-		
+		PhotonView.Get(other.gameObject).RPC("OTE", PhotonTargets.All, other);
 	}
 
 	private void OnTriggerExit(Collider other)
@@ -77,6 +76,23 @@ public class openDoor : MonoBehaviour {
 					return true;
 			}
 		return false;
+	}
+
+	[PunRPC]
+	private void OTE(Collider other)
+	{
+		if(other.tag == "Player")
+			inv = other.GetComponent<PlayerController>().Inventaire;
+		if (other.tag == "Player" && tag == "Porte" && !secure || secure && SearchKey(inv, key))
+		{
+			secure = false;
+			opening = true;
+			closing = false;
+		}
+		else if(secure && other.tag == "Player" && other.GetComponent<PlayerController>().consT != null)
+		{
+			other.GetComponent<PlayerController>().consT.text = "Tu as besoin de " + key;
+		}
 	}
 	
 	[PunRPC]
