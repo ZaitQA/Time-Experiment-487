@@ -142,10 +142,12 @@
           <e p="MENU.cs" t="Include" />
           <e p="Menuprincipal.cs" t="Include" />
           <e p="Minimap.cs" t="Include" />
+          <e p="MoveLaser.cs" t="Include" />
           <e p="openDoor.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="PlayerMotor.cs" t="Include" />
           <e p="Rotator.cs" t="Include" />
+          <e p="SpawnLaser.cs" t="Include" />
           <e p="SpellController.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">

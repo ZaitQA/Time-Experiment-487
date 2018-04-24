@@ -26522,6 +26522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nbPlayer: 0
+  posi: {x: 104.13, y: 1, z: 103.1933}
 --- !u!4 &1260018145
 Transform:
   m_ObjectHideFlags: 0
