@@ -15,17 +15,21 @@ public class Colorchange : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-			if (GetComponent<openDoor>().secure)
-			{
-				Vert.SetActive(false);
-				Red.SetActive(true);
-			}
-			else
-			{
-				Red.SetActive(false);
-				Vert.SetActive(true);
-			}
-		
+		PhotonView.Get(this).RPC("ColorChange", PhotonTargets.All);
+	}
 
+	[PunRPC]
+	private void ColorChange()
+	{
+		if (GetComponent<openDoor>().secure)
+		{
+			Vert.SetActive(false);
+			Red.SetActive(true);
+		}
+		else
+		{
+			Red.SetActive(false);
+			Vert.SetActive(true);
+		}
 	}
 }

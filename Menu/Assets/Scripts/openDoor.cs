@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class openDoor : MonoBehaviour {
@@ -31,10 +32,10 @@ public class openDoor : MonoBehaviour {
 	{
 		if (opening)
 		{
-			OpenDoor();
+			PhotonView.Get(this).RPC("OpenDoor", PhotonTargets.All);
 		}
 		if(closing)
-			CloseDoor();
+			PhotonView.Get(this).RPC("CloseDoor", PhotonTargets.All);
 
 	}
 
@@ -77,14 +78,16 @@ public class openDoor : MonoBehaviour {
 			}
 		return false;
 	}
-
+	
+	[PunRPC]
 	private void OpenDoor()
 	{
+		
 		if (!cote)
 		{
 			if (door.position.z <= maxOpenz + 4)
 			{
-
+				
 				move = 0.5f * Time.deltaTime * speed;
 
 				door.position = new Vector3(
@@ -110,7 +113,9 @@ public class openDoor : MonoBehaviour {
 			}
 			else opening = false;
 		}
-}
+	}
+	
+	[PunRPC]
 	private void CloseDoor()
 	{
 		if(!cote)
