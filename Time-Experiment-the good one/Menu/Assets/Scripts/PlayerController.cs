@@ -15,10 +15,8 @@ public class PlayerController : PlayerStat
 	public Text hp;
 	
 	public GameObject cons;
-	public GameObject Inv;
 
 	public Text consT;
-	public Text Invertaire;
 
 	private float maxlife;
 	private float maxenergie;
@@ -34,7 +32,7 @@ public class PlayerController : PlayerStat
 	private Text dead;
 	private GameObject Loading;
 	
-	public string[] inventaire = new string[20];
+	public string[] inventaire = new string[10];
 	public int index = 0;
 	private GameObject m;
 
@@ -65,8 +63,6 @@ public class PlayerController : PlayerStat
 		miniMap = GameObject.Find("RawImage");
 //		miniMap.transform.SetParent(m.transform, false);
 
-		Invertaire = GameObject.Find("Inv").GetComponent<Text>();
-		Invertaire.name = "Inv" + nbPlayer;
 		consT = GameObject.Find("cons").GetComponent<Text>();
 		consT.name = "con" + nbPlayer;
 
@@ -94,7 +90,7 @@ public class PlayerController : PlayerStat
 
 	void Update()
 	{
-
+		inventaire = GetComponent<Fouille>().inv;
 		defence = GetComponent<PlayerStat>().defence;
 		defenceS = GetComponent<PlayerStat>().defenceS;
 		attack = GetComponent<PlayerStat>().attack;
@@ -156,12 +152,17 @@ public class PlayerController : PlayerStat
 
 				vie.value = (float) Life / maxlife;
 				energie.value = (float) energieV / maxenergie;
-
 		}
 		if (Input.GetKeyDown(KeyCode.I))
 		{
-			ShowInventory();
+			GetComponent<PlayerController>().consT.text = index + " : " + Inventaire[index];
+			index += 1;
+			if (Inventaire[index] == "")
+			{
+				index = 0;
+			}
 		}
+	
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -186,8 +187,6 @@ public class PlayerController : PlayerStat
 		}
 	}
 
-
-
 	private void OnTriggerExit(Collider other)
 	{
 		if (other.tag == "laser")
@@ -203,13 +202,6 @@ public class PlayerController : PlayerStat
 		}
 	}
 
-	private void ShowInventory()
-	{
-		foreach (var i in Inventaire)
-		{
-			GetComponent<PlayerController>().Invertaire.text = i;
-		}
-	}
 
 	/*private void OnTriggerStay(Collider other)
 	{

@@ -52,10 +52,7 @@ public class Fouille : MonoBehaviour
 				other.gameObject.SetActive(false);
 				Debug.Log(index);
 				consT.text = "Tu as ramassé la clé " + other.name;
-
 		}
-		
-
 	}
 
 	private void OnTriggerExit(Collider other)
