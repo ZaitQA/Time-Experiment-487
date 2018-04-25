@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+<<<<<<< HEAD
+    <e p="C:\Users\Jérémie\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_Menu.-2037251004.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Jérémie\Documents\GitHub\Time-Experiment-487\Time-Experiment-487-b62ab2ca7e0eb0fa8a7c8141e87e10c6c041662a\Menu" t="IncludeRecursive">
+=======
     <e p="C:\Users\nicoletriso\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_Menu.208409496.00" t="ExcludeRecursive" />
     <e p="C:\Users\nicoletriso\Documents\GitHub\Time-Experiment-487\Time-Experiment-487-b62ab2ca7e0eb0fa8a7c8141e87e10c6c041662a\Menu" t="IncludeRecursive">
+>>>>>>> 06fdd92dd44637171bc628f742c674bad345a3db
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />

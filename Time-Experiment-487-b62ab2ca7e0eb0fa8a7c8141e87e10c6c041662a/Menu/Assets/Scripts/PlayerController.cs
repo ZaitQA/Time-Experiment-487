@@ -43,11 +43,14 @@ public class PlayerController : PlayerStat
 	void Start()
 	{
 
-
+<<<<<<< HEAD
+		//life = GetComponent<PlayerStat>().Life;
+		//energieV = GetComponent<PlayerStat>().energie;
+=======
 		Life = GetComponent<PlayerStat>().Life;
 		energieV = GetComponent<PlayerStat>().energieV;
-		Life = GetComponent<PlayerStat>().Life;
-		energieV = GetComponent<PlayerStat>().energieV;
+		Debug.Log(nbPlayer);
+>>>>>>> 06fdd92dd44637171bc628f742c674bad345a3db
 		nbPlayer = GameObject.Find("Manager").GetComponent<Manager>().nbPlayer;
 		Vector3 pos = new Vector3(105, 0, 105);
 		GameObject c = PhotonNetwork.Instantiate("Main Camera", pos, Quaternion.identity, 0);
@@ -91,6 +94,7 @@ public class PlayerController : PlayerStat
 	void Update()
 	{
 
+		Debug.Log(life);
 		if (deadd)
 		{
 			deadText.SetActive(true);
@@ -182,7 +186,7 @@ public class PlayerController : PlayerStat
 	{
 		if (other.tag == "laser")
 		{
-			Life -= 25;
+			life -= 25;
 
 		}
 	}
