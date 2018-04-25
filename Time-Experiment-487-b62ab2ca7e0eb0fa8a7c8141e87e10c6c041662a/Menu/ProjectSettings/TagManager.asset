@@ -9,6 +9,8 @@ TagManager:
   - key
   - fire
   - fouille
+  - laser
+  - exit
   layers:
   - Default
   - TransparentFX

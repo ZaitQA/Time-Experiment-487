@@ -32,6 +32,7 @@ public class PlayerController : PlayerStat
 	
 	private GameObject deadText;
 	private Text dead;
+	private GameObject Loading;
 	
 	public string[] inventaire = new string[20];
 	public int index = 0;
@@ -44,9 +45,8 @@ public class PlayerController : PlayerStat
 	void Start()
 	{
 
-		life = GetComponent<PlayerStat>().Life;
-		energieV = GetComponent<PlayerStat>().energie;
-		Debug.Log(nbPlayer);
+		//life = GetComponent<PlayerStat>().Life;
+		//energieV = GetComponent<PlayerStat>().energie;
 		nbPlayer = GameObject.Find("Manager").GetComponent<Manager>().nbPlayer;
 		Vector3 pos = new Vector3(105, 0, 105);
 		GameObject c = PhotonNetwork.Instantiate("Main Camera", pos, Quaternion.identity, 0);
@@ -90,6 +90,7 @@ public class PlayerController : PlayerStat
 	void Update()
 	{
 
+		Debug.Log(life);
 		if (deadd)
 		{
 			deadText.SetActive(true);
@@ -153,6 +154,15 @@ public class PlayerController : PlayerStat
 		}
 	}
 
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.tag == "exit")
+		{
+			PhotonNetwork.Disconnect();
+			GameObject.Find("Manager").GetComponent<LoadScene>().LoadScenes(3);
+		}
+	}
+
 	private void OnTriggerStay(Collider other)
 	{
 		if (other.tag == "fire")
@@ -168,22 +178,16 @@ public class PlayerController : PlayerStat
 
 
 
-	/*private void OnTriggerEnter(Collider other)
+	private void OnTriggerExit(Collider other)
 	{
-		if (other.tag == "fouille" && tag == "Player" && consT != null)
+		if (other.tag == "laser")
 		{
-			consT.text = "Appuyer sur la touche F pour fouiller.";
-			Debug.Log("Fouille");
+			life -= 25;
 
-		}
-		if (other.tag == "key" && consT != null)
-		{
-			Debug.Log("Key");
-			consT.text = "Appuyez sur la touche R pour ramasser la clé.";
 		}
 	}
 
-	private void OnTriggerStay(Collider other)
+	/*private void OnTriggerStay(Collider other)
 	{
 		if (other.tag == "fire")
 		{
