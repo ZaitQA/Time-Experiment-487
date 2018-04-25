@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using System.IO;
+using UnityEngine;
 
 
 public class PlayerStat : MonoBehaviour
 {
+	private TextReader _reader;
 	public float attack;
 	public float defence;
 	public float TimerS;
@@ -10,23 +13,23 @@ public class PlayerStat : MonoBehaviour
 	public float TimerA;
 	public float speed;
 	public int Nbteleport;
-	public float energie;
+	public float energieV;
 	public int NbrCOmpétence;
 	
 	void Start ()
 	{
-		attackadd = GetComponent<PlayerStat>().attackadd;
 		speed = speedadd + 16f;
 		TimerA = TimerAadd + 3f;
 		TimerS = TimerSadd + 5f;
-		attack = Attackadd1 + 1f;
+		attack =  Attack + 1f;
+		Debug.Log(Attack);
 		defence = defenceadd + 0f;
 		Life = lifeadd + 100;
-		energie = energieadd + 100;
+		energieV = energieadd + 100;
 		Nbteleport = Nbteleportadd + 1;
 		NbrCOmpétence = 1;
 	}
-
+	
 	private float attackadd;
 	private float defenceadd;
 	private float TimerSadd;
@@ -35,6 +38,7 @@ public class PlayerStat : MonoBehaviour
 	private float speedadd;
 	private int Nbteleportadd;
 	private float energieadd;
+
 	
 	void Update ()
 	{
@@ -43,8 +47,6 @@ public class PlayerStat : MonoBehaviour
 		GetComponent<PlayerStat>().TimerS = TimerS;
 		GetComponent<PlayerStat>().attack = attack;
 		GetComponent<PlayerStat>().defence = defence;
-		GetComponent<PlayerController>().life = Life;
-		GetComponent<PlayerController>().energieV = energie;
 		GetComponent<PlayerStat>().Nbteleport = Nbteleport;
 	}
 
@@ -60,7 +62,7 @@ public class PlayerStat : MonoBehaviour
 	{
 		if (NbrCOmpétence >= 1)
 		{
-			attackadd = PlayerPrefs.GetInt("Attack", 0);
+			attackadd += 1;
 			NbrCOmpétence -= 1;
 		}
 	}
@@ -107,9 +109,9 @@ public class PlayerStat : MonoBehaviour
 			NbrCOmpétence -= 1;
 		}
 	}
-	public float Attackadd1
+	public float Attack
 	{
 		get { return attackadd; }
-		set { attackadd = value; }
-	}	
+	}
+
 }

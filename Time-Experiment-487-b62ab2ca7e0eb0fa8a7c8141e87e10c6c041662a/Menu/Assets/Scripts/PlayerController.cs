@@ -17,9 +17,7 @@ public class PlayerController : PlayerStat
 	public GameObject cons;
 
 	public Text consT;
-	public float life;
-	public float energieV;
-
+	
 	private int maxlife = 100;
 	private int maxenergie = 100;
 
@@ -44,8 +42,8 @@ public class PlayerController : PlayerStat
 	void Start()
 	{
 
-		life = GetComponent<PlayerStat>().Life;
-		energieV = GetComponent<PlayerStat>().energie;
+		Life = GetComponent<PlayerStat>().Life;
+		energieV = GetComponent<PlayerStat>().energieV;
 		Debug.Log(nbPlayer);
 		nbPlayer = GameObject.Find("Manager").GetComponent<Manager>().nbPlayer;
 		Vector3 pos = new Vector3(105, 0, 105);
@@ -117,36 +115,36 @@ public class PlayerController : PlayerStat
 			}
 			if (Input.GetKeyDown(KeyCode.L))
 			{
-				if (life - 15 > 0)
-					life -= 15;
+				if (Life - 15 > 0)
+					Life -= 15;
 				else
 				{
-					life = 0;
+					Life = 0;
 					deadText.SetActive(true);
 				}
 
 			}
 			if (Input.GetKeyDown(KeyCode.M))
 			{
-				if (life + 20 < maxlife)
-					life += 20;
+				if (Life + 20 < maxlife)
+					Life += 20;
 				else
 				{
-					life = maxlife;
+					Life = maxlife;
 				}
 			}
 
-			if (life >= maxlife)
+			if (Life >= maxlife)
 			{
-				life = maxlife;
+				Life = maxlife;
 			}
-			else if (life <= 0)
+			else if (Life <= 0)
 			{
-				life = 0;
+				Life = 0;
 				deadd = true;
 			}
 
-				vie.value = (float) life / maxlife;
+				vie.value = (float) Life / maxlife;
 				energie.value = (float) energieV / maxenergie;
 			
 
@@ -161,7 +159,7 @@ public class PlayerController : PlayerStat
 			if (timer >= 0.5)
 			{
 				timer = 0;
-				life -= 1;
+				Life -= 1;
 			}
 		}
 	}

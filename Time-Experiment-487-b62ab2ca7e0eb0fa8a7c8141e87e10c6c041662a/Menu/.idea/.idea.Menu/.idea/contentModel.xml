@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\nicoletriso\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_Menu.-1472497167.00" t="ExcludeRecursive" />
-    <e p="C:\Users\nicoletriso\Downloads\Time-Experiment-487-b62ab2ca7e0eb0fa8a7c8141e87e10c6c041662a\Menu" t="IncludeRecursive">
+    <e p="C:\Users\nicoletriso\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_Menu.208409496.00" t="ExcludeRecursive" />
+    <e p="C:\Users\nicoletriso\Documents\GitHub\Time-Experiment-487\Time-Experiment-487-b62ab2ca7e0eb0fa8a7c8141e87e10c6c041662a\Menu" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -131,6 +131,11 @@
           <e p="release_history.txt" t="Include" />
           <e p="WebSocket" t="Include">
             <e p="WebSocket.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Resources" t="Include">
+          <e p="Statadd" t="Include">
+            <e p="attack add.txt" t="Include" />
           </e>
         </e>
         <e p="Scripts" t="Include">
