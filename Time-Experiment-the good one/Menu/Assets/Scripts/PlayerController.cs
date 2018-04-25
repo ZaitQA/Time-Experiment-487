@@ -15,11 +15,13 @@ public class PlayerController : PlayerStat
 	public Text hp;
 	
 	public GameObject cons;
+	public GameObject Inv;
 
 	public Text consT;
-	
-	private int maxlife = 100;
-	private int maxenergie = 100;
+	public Text Invertaire;
+
+	private float maxlife;
+	private float maxenergie;
 
 
 	private GameObject miniMap;
@@ -39,13 +41,15 @@ public class PlayerController : PlayerStat
 	private float timer = 0;
 	private int nbPlayer;
 	private bool deadd;
+	public float degats;
 
 	void Start()
 	{
-
-
 		Life = GetComponent<PlayerStat>().Life;
+		maxlife = GetComponent<PlayerStat>().Life;
 		energieV = GetComponent<PlayerStat>().energieV;
+		maxenergie = GetComponent<PlayerStat>().energieV;
+		
 		nbPlayer = GameObject.Find("Manager").GetComponent<Manager>().nbPlayer;
 		Vector3 pos = new Vector3(105, 0, 105);
 		GameObject c = PhotonNetwork.Instantiate("Main Camera", pos, Quaternion.identity, 0);
@@ -60,7 +64,9 @@ public class PlayerController : PlayerStat
 
 		miniMap = GameObject.Find("RawImage");
 //		miniMap.transform.SetParent(m.transform, false);
-		
+
+		Invertaire = GameObject.Find("Inv").GetComponent<Text>();
+		Invertaire.name = "Inv" + nbPlayer;
 		consT = GameObject.Find("cons").GetComponent<Text>();
 		consT.name = "con" + nbPlayer;
 
@@ -89,6 +95,9 @@ public class PlayerController : PlayerStat
 	void Update()
 	{
 
+		defence = GetComponent<PlayerStat>().defence;
+		defenceS = GetComponent<PlayerStat>().defenceS;
+		attack = GetComponent<PlayerStat>().attack;
 		if (deadd)
 		{
 			deadText.SetActive(true);
@@ -147,8 +156,11 @@ public class PlayerController : PlayerStat
 
 				vie.value = (float) Life / maxlife;
 				energie.value = (float) energieV / maxenergie;
-			
 
+		}
+		if (Input.GetKeyDown(KeyCode.I))
+		{
+			ShowInventory();
 		}
 	}
 
@@ -180,8 +192,22 @@ public class PlayerController : PlayerStat
 	{
 		if (other.tag == "laser")
 		{
-			Life -= 25;
+			degats = 25 - defence;
+			if (SpellController.protection)
+			{
+				degats = 25 - defenceS;
+				Debug.Log(defenceS);
+			}
+			Life -= degats;
 
+		}
+	}
+
+	private void ShowInventory()
+	{
+		foreach (var i in Inventaire)
+		{
+			GetComponent<PlayerController>().Invertaire.text = i;
 		}
 	}
 

@@ -38,7 +38,6 @@ public class Fouille : MonoBehaviour
 		{
 
 				other.GetComponent<Collider>().gameObject.SetActive(false);
-				Debug.Log(index);
 				inv[index] = other.name;
 				index += 1;
 				Debug.Log(index);

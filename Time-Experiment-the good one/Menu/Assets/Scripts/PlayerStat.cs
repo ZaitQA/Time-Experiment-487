@@ -58,6 +58,7 @@ public class PlayerStat : MonoBehaviour
 	
 	void Update ()
 	{
+		GetComponent<PlayerStat>().Life = Life;
 		GetComponent<PlayerStat>().speed = speed;
 		GetComponent<PlayerStat>().TimerA = TimerA;
 		GetComponent<PlayerStat>().TimerS = TimerS;
