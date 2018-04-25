@@ -15,6 +15,8 @@ public class SpellController : PlayerStat
 	private static bool stune;
 	private static bool Teleport;
 	private static bool Accelerate;
+	private static bool Protection;
+	private float defence2;
 	private float Speed2; 
 	private float Accelerate2;
 	public int count = 0;
@@ -27,6 +29,7 @@ public class SpellController : PlayerStat
 	{
 		this.Speed2 = GetComponent<NavMeshAgent>().speed;
 		this.Accelerate2 =  GetComponent<NavMeshAgent>().acceleration;
+		this.defence2 = GetComponent<PlayerStat>().defence;
 	}
 	
 	
@@ -34,17 +37,16 @@ public class SpellController : PlayerStat
 	
 	{
 		if (Teleport)
-        {
-			FuncTeleport();
-		}
+        {FuncTeleport();}
+		
 		if (Accelerate)
-		{
-			FuncAccelerate();
-		}
+		{FuncAccelerate();}
+		
 		if (Stune)
-		{
-			FuncStune();
-		}
+		{FuncStune();}
+		
+		if (Protection)
+		{FuncProtection();}
 			
 		if (Input.GetKey(KeyCode.Keypad1))
 		{
@@ -88,6 +90,20 @@ public class SpellController : PlayerStat
 			{
 				GetComponent<PlayerController>().consT.text = "No more energie";
 			}
+		}
+		if (Input.GetKey(KeyCode.Keypad4))
+		{
+			if (GetComponent<PlayerStat>().Protectiondd == 1)
+			{
+				if (GetComponent<PlayerController>().energieV >= 25)
+				{
+					Protection = true;
+					TimerP = GetComponent<PlayerStat>().TimerP;
+					defenceS = GetComponent<PlayerStat>().defenceS;
+					GetComponent<PlayerController>().energieV -= 25;
+				}
+			}
+				
 		}
 	}
 	
@@ -166,6 +182,24 @@ public class SpellController : PlayerStat
 			GetComponent<NavMeshAgent>().acceleration = Accelerate2;
 		}
 	}
+
+	public void FuncProtection()
+	{
+		if (Protection)
+		{
+			if (TimerP > 0)
+			{
+				GetComponent<PlayerStat>().defence = defenceS;
+			}
+			if(TimerP <= 0)
+			{
+				Protection = false;
+				GetComponent<PlayerStat>().defence = defence2;
+			}
+			TimerP -= Time.deltaTime;
+		}
+	}
+	
 
 	public static bool Stune
 	{
