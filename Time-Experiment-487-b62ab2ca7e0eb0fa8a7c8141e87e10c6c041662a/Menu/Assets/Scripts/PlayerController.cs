@@ -46,8 +46,6 @@ public class PlayerController : PlayerStat
 
 		Life = GetComponent<PlayerStat>().Life;
 		energieV = GetComponent<PlayerStat>().energieV;
-		Life = GetComponent<PlayerStat>().Life;
-		energieV = GetComponent<PlayerStat>().energieV;
 		nbPlayer = GameObject.Find("Manager").GetComponent<Manager>().nbPlayer;
 		Vector3 pos = new Vector3(105, 0, 105);
 		GameObject c = PhotonNetwork.Instantiate("Main Camera", pos, Quaternion.identity, 0);
@@ -159,7 +157,7 @@ public class PlayerController : PlayerStat
 		if (other.tag == "exit")
 		{
 			PhotonNetwork.Disconnect();
-			GameObject.Find("Manager").GetComponent<LoadScene>().LoadScenes(3);
+			GameObject.Find("Manager").GetComponent<LoadScene>().LoadScenes(4);
 		}
 	}
 

@@ -20,3 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Niveau2E-3.unity
     guid: 458244990c2eda54989d585dc46aca26
+  - enabled: 1
+    path: Assets/Scenes/SkillTree.unity
+    guid: 5915bca7fbf6dbe49b1b514f1cc2dfe5
