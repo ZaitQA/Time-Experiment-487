@@ -5,39 +5,35 @@ using System.Collections;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMovement : MonoBehaviour
 {
-	private Transform player;               // Reference to the player's position.
-	//PlayerHealth playerHealth;      // Reference to the player's health.
-	//EnemyHealth enemyHealth;        // Reference to this enemy's health.
+	private GameObject player;               // Reference to the player's position.
+	PlayerController playerHealth;      // Reference to the player's health.
+	EnemyHealth enemyHealth;        // Reference to this enemy's health.
 	private NavMeshAgent agent;               // Reference to the nav mesh agent.
-
-
-	void Start()
-	{
-		// Set up the references.
-
-		//playerHealth = player.GetComponent <PlayerHealth> ();
-		//enemyHealth = GetComponent <EnemyHealth> ();
-	}
 
 
 	void Update()
 	{
-		// If the enemy and the player have health left...
+		player = GameObject.FindGameObjectWithTag ("Player");
+		playerHealth = player.GetComponent <PlayerController> ();
+		enemyHealth = GetComponent <EnemyHealth> ();
 		agent = GetComponent <UnityEngine.AI.NavMeshAgent> ();
-		player = GameObject.FindGameObjectWithTag ("Player").transform;
-		if(true //enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0
-			)
+		if(enemyHealth.currentHealth > 0 && playerHealth.Life > 0 )
 		{
-			// ... set the destination of the nav mesh agent to the player.
-			float distance = Vector3.Distance(transform.position, player.position);
-			if(distance < 30)
-				agent.SetDestination (player.position);
+			float distance = Vector3.Distance(transform.position, player.transform.position);
+			if(distance < 8 && SpellController.Stune == false)
+			PhotonView.Get(this).RPC("enemmymov", PhotonTargets.All);
 		}
 		// Otherwise...
-		//else
+		else
 		{
-			// ... disable the nav mesh agent.
-			//agent.enabled = false;
+			agent.enabled = false;
 		}
-	} 
+	}
+
+	[PunRPC]
+	private void enemmymov()
+	{
+		
+		{agent.SetDestination (player.transform.position);}
+	}
 }

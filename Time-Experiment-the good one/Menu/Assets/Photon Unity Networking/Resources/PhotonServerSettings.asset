@@ -38,4 +38,6 @@ MonoBehaviour:
   - RequestForPickupTimes
   - CloseDoor
   - OpenDoor
+  - enemmymov
+  - Move
   DisableAutoOpenWizard: 1

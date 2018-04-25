@@ -3,16 +3,18 @@ using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int startingHealth = 100;            // The amount of health the enemy starts the game with.
-    public int currentHealth;                   // The current health the enemy has.
-    public float sinkSpeed = 2.5f;              // The speed at which the enemy sinks through the floor when dead.
+    public float startingHealth = 100;            // The amount of health the enemy starts the game with.
+    public float currentHealth;                   // The current health the enemy has.
+    public float sinkSpeed = 2.5f;
+    private GameObject player;
+    private playerAttack _playerAttack;
     
     BoxCollider boxCollider;            // Reference to the capsule collider.
     bool isDead;                                // Whether the enemy is dead.
     bool isSinking;                             // Whether the enemy has started sinking through the floor.
 
 
-    void Sart()
+    void Start()
     {
         // Setting up the references.
         boxCollider = GetComponent <BoxCollider> ();
@@ -23,33 +25,36 @@ public class EnemyHealth : MonoBehaviour
 
     void Update ()
     {
-        // If the enemy should be sinking...
+        player =  player = GameObject.FindGameObjectWithTag ("Player");
+        _playerAttack = player.GetComponent<playerAttack>();
+        GetComponent<EnemyHealth>().currentHealth = currentHealth;
+       
         if(isSinking)
         {
-            // ... move the enemy down by the sinkSpeed per second.
             transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
         }
-    }
-
-
-    public void TakeDamage (int amount, Vector3 hitPoint)
-    {
-        // If the enemy is dead...
-        if(isDead)
-            // ... no need to take damage so exit the function.
-            return;
-
-        // Reduce the current health by the amount of damage sustained.
-        currentHealth -= amount;
-
-        // If the current health is less than or equal to zero...
-        if(currentHealth <= 0)
+        if (playerAttack.Attacked)
         {
-            // ... the enemy is dead.
-            Death ();
+            TakeDamage(_playerAttack.attack);
         }
     }
 
+    public void TakeDamage (float amount)
+    {
+
+        float dis = Vector3.Distance(transform.position, player.transform.position);
+        if (dis < 1.5)
+        {
+            currentHealth -= amount;
+            Debug.Log(amount);
+            playerAttack.Attacked = false;
+        }
+        if(currentHealth <= 0)
+        {
+            Death ();
+            StartSinking();
+        }
+    }
 
     void Death ()
     {

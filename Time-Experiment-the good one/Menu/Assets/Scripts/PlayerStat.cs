@@ -17,6 +17,7 @@ public class PlayerStat : MonoBehaviour
 	public float energieV;
 	public float defenceS;
 	public int Protectiondd;
+	public float TimeBetweenAttack;
 	public int NbrCOmpétence;
 
 	private float attackadd;
@@ -41,6 +42,7 @@ public class PlayerStat : MonoBehaviour
 		Life = PlayerPrefs.GetInt("life") + 100;
 		energieV = PlayerPrefs.GetInt("energie") + 100;
 		Nbteleport = PlayerPrefs.GetInt("Nbteleport") + 1;
+		TimeBetweenAttack = 2;
 		Protectiondd = PlayerPrefs.GetInt("Protection");
 		
 		PlayerPrefs.DeleteKey("speed");

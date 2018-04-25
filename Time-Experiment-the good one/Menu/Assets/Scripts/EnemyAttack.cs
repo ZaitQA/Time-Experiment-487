@@ -4,71 +4,52 @@ using System.Collections;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float timeBetweenAttacks = 0.5f;     // The time in seconds between each attack.
-    public int attackDamage = 10;               // The amount of health taken away per attack.
+   
+    public float timeBetweenAttacks;     // The time in seconds between each attack.
+    public float attackDamage;               // The amount of health taken away per attack.
 
+    public float dismax;
     GameObject player;                          // Reference to the player GameObject.
-    PlayerHealth playerHealth;                  // Reference to the player's health.
+    PlayerController playerHealth;                  // Reference to the player's health.
     EnemyHealth enemyHealth;                    // Reference to this enemy's health.
     bool playerInRange;                         // Whether player is within the trigger collider and can be attacked.
     float timer;                                // Timer for counting up to the next attack.
 
-
-    void Awake ()
-    {
-        // Setting up the references.
-        player = GameObject.FindGameObjectWithTag ("Player");
-        playerHealth = player.GetComponent <PlayerHealth> ();
-        enemyHealth = GetComponent<EnemyHealth>();
-    }
-
-
-    void OnTriggerEnter (Collider other)
-    {
-        // If the entering collider is the player...
-        if(other.gameObject == player)
-        {
-            // ... the player is in range.
-            playerInRange = true;
-        }
-    }
-
-
-    void OnTriggerExit (Collider other)
-    {
-        // If the exiting collider is the player...
-        if(other.gameObject == player)
-        {
-            // ... the player is no longer in range.
-            playerInRange = false;
-        }
-    }
-
-
+ 
     void Update ()
     {
-        // Add the time since Update was last called to the timer.
         timer += Time.deltaTime;
-
-        // If the timer exceeds the time between attacks, the player is in range and this enemy is alive...
-        if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
+        player = GameObject.FindGameObjectWithTag ("Player");
+        playerHealth = player.GetComponent <PlayerController> ();
+        enemyHealth = GetComponent<EnemyHealth>();
+       float dis = Vector3.Distance(transform.position, player.transform.position);
+        if (dis < dismax)
         {
-            // ... attack.
+            playerInRange = true;
+           
+        }
+        else
+        {
+            playerInRange = false;
+        }
+        if(enemyHealth.currentHealth > 0 && playerInRange && timer >= timeBetweenAttacks && SpellController.Stune == false)
+        {
             Attack ();
         }
     }
 
-
+    
     void Attack ()
     {
-        // Reset the timer.
-        timer = 0f;
-
-        // If the player has health to lose...
-        if(playerHealth.currentHealth > 0)
+        timer = 0;
+        if(playerHealth.Life > 0 )
         {
-            // ... damage the player.
-            playerHealth.TakeDamage (attackDamage);
+            attackDamage -= playerHealth.defence;
+            if (SpellController.protection)
+            {
+                attackDamage = attackDamage - playerHealth.defenceS;
+            }
+            playerHealth.Life -= attackDamage;
         }
     }
 }

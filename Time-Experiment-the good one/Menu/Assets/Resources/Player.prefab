@@ -320,6 +320,7 @@ GameObject:
   - component: {fileID: 65029693606598906}
   - component: {fileID: 114131760198258464}
   - component: {fileID: 114526792665607710}
+  - component: {fileID: 114900144483229126}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1402,6 +1403,7 @@ MonoBehaviour:
   energieV: 100
   defenceS: 0
   Protectiondd: 0
+  TimeBetweenAttack: 0
   "NbrCOmp\xE9tence": 0
   cam: {fileID: 0}
   mask:
@@ -1447,6 +1449,7 @@ MonoBehaviour:
   energieV: 0
   defenceS: 0
   Protectiondd: 0
+  TimeBetweenAttack: 0
   "NbrCOmp\xE9tence": 0
   count: 0
 --- !u!114 &114688907874447912
@@ -1471,6 +1474,7 @@ MonoBehaviour:
   energieV: 0
   defenceS: 0
   Protectiondd: 0
+  TimeBetweenAttack: 0
   "NbrCOmp\xE9tence": 0
 --- !u!114 &114780232802144606
 MonoBehaviour:
@@ -1498,6 +1502,31 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
+--- !u!114 &114900144483229126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1823322069810372}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd177fe7b0b645c4590a934acf5aa694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 0
+  defence: 0
+  TimerS: 0
+  Life: 0
+  TimerA: 0
+  TimerP: 0
+  speed: 0
+  Nbteleport: 0
+  energieV: 0
+  defenceS: 0
+  Protectiondd: 0
+  TimeBetweenAttack: 0
+  "NbrCOmp\xE9tence": 0
+  couldownTime: 0
 --- !u!114 &114994943604373072
 MonoBehaviour:
   m_ObjectHideFlags: 1

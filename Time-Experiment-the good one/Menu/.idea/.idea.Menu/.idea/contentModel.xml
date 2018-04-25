@@ -141,6 +141,9 @@
         <e p="Scripts" t="Include">
           <e p="CameraController.cs" t="Include" />
           <e p="Colorchange.cs" t="Include" />
+          <e p="EnemyAttack.cs" t="Include" />
+          <e p="EnemyHealth.cs" t="Include" />
+          <e p="EnemyMovement.cs" t="Include" />
           <e p="Fouille.cs" t="Include" />
           <e p="LoadScene.cs" t="Include" />
           <e p="Manager.cs" t="Include" />
@@ -149,6 +152,7 @@
           <e p="Minimap.cs" t="Include" />
           <e p="MoveLaser.cs" t="Include" />
           <e p="openDoor.cs" t="Include" />
+          <e p="playerAttack.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="PlayerMotor.cs" t="Include" />
           <e p="PlayerStat.cs" t="Include" />

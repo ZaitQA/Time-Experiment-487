@@ -39,7 +39,8 @@ public class Manager : MonoBehaviour
 		j.GetComponent<PlayerController>().enabled = true;
 		j.GetComponent<PlayerMotor>().enabled = true;
 		j.GetComponent<SpellController>().enabled = true;
-	
+		j.GetComponent<playerAttack>().enabled = true;
+
 
 	}
 	
