@@ -11,6 +11,8 @@ TagManager:
   - fouille
   - laser
   - exit
+  - wall
+  - shot
   layers:
   - Default
   - TransparentFX

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Tir : MonoBehaviour {
 
 	private Rigidbody rb;
-	private AudioSource audio;
 	public int speed;
 	public int tilt;
 
@@ -17,11 +16,10 @@ public class Tir : MonoBehaviour {
 
 	void Update()
 	{
-		if (Input.GetButton("Fire1") && Time.time > nextFire)
+		if (Input.GetButton("Fire2") && Time.time > nextFire)
 		{
 			Instantiate(shot, ShotSpawn.position, ShotSpawn.rotation);
 			nextFire = Time.time + fireRate;
-			audio.Play();
 
 		}
 	}
