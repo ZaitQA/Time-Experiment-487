@@ -17,6 +17,12 @@ public class PlayerMotor : MonoBehaviour
 	// Update is called once per frame
 	public void MoveToPoint(Vector3 point)
 	{
+		PhotonView.Get(this).RPC("Move", PhotonTargets.All, point);
+	}
+
+	[PunRPC]
+	public void Move(Vector3 point)
+	{
 		agent.SetDestination(point);
 	}
 }

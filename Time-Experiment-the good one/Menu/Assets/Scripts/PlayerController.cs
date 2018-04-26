@@ -17,9 +17,9 @@ public class PlayerController : PlayerStat
 	public GameObject cons;
 
 	public Text consT;
-	
-	private int maxlife = 100;
-	private int maxenergie = 100;
+
+	private float maxlife;
+	private float maxenergie;
 
 
 	private GameObject miniMap;
@@ -32,20 +32,22 @@ public class PlayerController : PlayerStat
 	private Text dead;
 	private GameObject Loading;
 	
-	public string[] inventaire = new string[20];
+	public string[] inventaire = new string[10];
 	public int index = 0;
 	private GameObject m;
 
 	private float timer = 0;
 	private int nbPlayer;
 	private bool deadd;
+	public float degats;
 
 	void Start()
 	{
-
-
 		Life = GetComponent<PlayerStat>().Life;
+		maxlife = GetComponent<PlayerStat>().Life;
 		energieV = GetComponent<PlayerStat>().energieV;
+		maxenergie = GetComponent<PlayerStat>().energieV;
+		
 		nbPlayer = GameObject.Find("Manager").GetComponent<Manager>().nbPlayer;
 		Vector3 pos = new Vector3(105, 0, 105);
 		GameObject c = PhotonNetwork.Instantiate("Main Camera", pos, Quaternion.identity, 0);
@@ -53,14 +55,13 @@ public class PlayerController : PlayerStat
 
 		cam = c.GetComponent<Camera>();
 
-
 		m = PhotonNetwork.Instantiate("Canvas", pos, Quaternion.identity, 0);
 		m.name = "Canvas" + nbPlayer;
 		m.SetActive(true);
 
 		miniMap = GameObject.Find("RawImage");
 //		miniMap.transform.SetParent(m.transform, false);
-		
+
 		consT = GameObject.Find("cons").GetComponent<Text>();
 		consT.name = "con" + nbPlayer;
 
@@ -88,17 +89,19 @@ public class PlayerController : PlayerStat
 
 	void Update()
 	{
-
+		inventaire = GetComponent<Fouille>().inv;
+		defence = GetComponent<PlayerStat>().defence;
+		defenceS = GetComponent<PlayerStat>().defenceS;
+		attack = GetComponent<PlayerStat>().attack;
 		if (deadd)
 		{
-			deadText.SetActive(true);
 			Cursor.visible = true;
 			Cursor.lockState = CursorLockMode.Confined;
 			Time.timeScale = 0;
 		}
 		else
 		{
-//			deadText.SetActive(false);
+
 			Cursor.visible = true;
 			Time.timeScale = 1;
 			if (Input.GetKeyDown(KeyCode.Escape))
@@ -147,9 +150,17 @@ public class PlayerController : PlayerStat
 
 				vie.value = (float) Life / maxlife;
 				energie.value = (float) energieV / maxenergie;
-			
-
 		}
+		if (Input.GetKeyDown(KeyCode.I))
+		{
+			GetComponent<PlayerController>().consT.text = index + " : " + Inventaire[index];
+			index += 1;
+			if (Inventaire[index] == "")
+			{
+				index = 0;
+			}
+		}
+	
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -174,62 +185,21 @@ public class PlayerController : PlayerStat
 		}
 	}
 
-
-
 	private void OnTriggerExit(Collider other)
 	{
 		if (other.tag == "laser")
 		{
-			Life -= 25;
+			degats = 25 - defence;
+			if (SpellController.protection)
+			{
+				degats = 25 - defenceS;
+				Debug.Log(defenceS);
+			}
+			Life -= degats;
 
 		}
 	}
 
-	/*private void OnTriggerStay(Collider other)
-	{
-		if (other.tag == "fire")
-		{
-			timer += Time.deltaTime;
-			if (timer >= 0.5)
-			{
-				timer = 0;
-				life -= 1;
-			}
-		}
-		if (other.tag == "fouille" && tag == "Player" && other.name == "Rien" && consT != null && Input.GetKeyDown(KeyCode.F))
-		{
-			consT.text = "Il n'y a rien à l'intérieur ...";
-		}
-		else if (other.tag == "fouille" && tag == "Player" && other.name != "Rien" && consT != null &&
-		         Input.GetKeyDown(KeyCode.F))
-		{
-			if (inventaire.Length >= 1)
-			{
-				inventaire[index] = other.name;
-				index += 1;
-			}
-			consT.text = "Tu as trouvé " + other.name;
-		}
-		else if (other.tag == "key" && Input.GetKeyDown(KeyCode.R) && consT != null)
-		{
-			if (inventaire.Length >= 1)
-			{
-				inventaire[index] = other.name;
-				index += 1;
-			}
-			other.gameObject.SetActive(false);
-			consT.text = "Tu as ramassé la clé " + other.name;
-
-		}
-		
-
-	}
-
-	private void OnTriggerExit(Collider other)
-	{
-		if ((other.tag == "fouille" || other.tag == "key") && consT != null)
-			consT.text = "";
-	}*/
 
 	private void Dead()
 	{

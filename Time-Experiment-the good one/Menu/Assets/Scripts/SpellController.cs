@@ -48,7 +48,7 @@ public class SpellController : PlayerStat
 		if (Protection)
 		{FuncProtection();}
 			
-		if (Input.GetKey(KeyCode.Keypad1))
+		if (Input.GetKeyDown(KeyCode.Keypad1))
 		{
 			if (GetComponent<PlayerController>().energieV >= 20)
 			{
@@ -63,7 +63,7 @@ public class SpellController : PlayerStat
 			}
 
 		}
-		if (Input.GetKey(KeyCode.Keypad2))
+		if (Input.GetKeyDown(KeyCode.Keypad2))
 		{
 			if (GetComponent<PlayerController>().energieV >= 15)
 			{
@@ -78,7 +78,7 @@ public class SpellController : PlayerStat
 			}
 		}
 		
-		if (Input.GetKey(KeyCode.Keypad3))
+		if (Input.GetKeyDown(KeyCode.Keypad3))
 		{
 			if (GetComponent<PlayerController>().energieV >= 25)
 			{
@@ -91,7 +91,7 @@ public class SpellController : PlayerStat
 				GetComponent<PlayerController>().consT.text = "No more energie";
 			}
 		}
-		if (Input.GetKey(KeyCode.Keypad4))
+		if (Input.GetKeyDown(KeyCode.Keypad4))
 		{
 			if (GetComponent<PlayerStat>().Protectiondd == 1)
 			{
@@ -150,6 +150,7 @@ public class SpellController : PlayerStat
 		{
 		    if (Input.GetMouseButton(0))
 				{
+					
 					cam1 = GetComponent<PlayerController>().cam;
 					Ray ray = cam1.ScreenPointToRay(Input.mousePosition);
 					RaycastHit hit;
@@ -205,5 +206,10 @@ public class SpellController : PlayerStat
 	{
 		get { return stune; }
 		set { stune = value; }
+	}
+	public static bool protection
+	{
+		get { return Protection; }
+		set { Protection = value; }
 	}
 }

@@ -38,7 +38,6 @@ public class Fouille : MonoBehaviour
 		{
 
 				other.GetComponent<Collider>().gameObject.SetActive(false);
-				Debug.Log(index);
 				inv[index] = other.name;
 				index += 1;
 				Debug.Log(index);
@@ -53,10 +52,7 @@ public class Fouille : MonoBehaviour
 				other.gameObject.SetActive(false);
 				Debug.Log(index);
 				consT.text = "Tu as ramassé la clé " + other.name;
-
 		}
-		
-
 	}
 
 	private void OnTriggerExit(Collider other)

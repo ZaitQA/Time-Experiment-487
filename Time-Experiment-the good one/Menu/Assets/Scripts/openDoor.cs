@@ -26,7 +26,7 @@ public class openDoor : MonoBehaviour {
 		maxOpenx = door.position.x;
 	}
 	
-	// Update is called once per frame
+	
 	private void FixedUpdate()
 	{
 		if (opening)
@@ -42,13 +42,13 @@ public class openDoor : MonoBehaviour {
 	{
 		if(other.tag == "Player")
 			inv = other.GetComponent<PlayerController>().Inventaire;
-		if (other.tag == "Player" && tag == "Porte" && !secure || secure && SearchKey(inv, key))
+		if (other.tag == "Player"  && tag == "Porte" && !secure || secure && SearchKey(inv, key))
 		{
 			secure = false;
 			opening = true;
 			closing = false;
 		}
-		else if(secure && other.tag == "Player" && other.GetComponent<PlayerController>().consT != null)
+		else if(secure && other.tag == "Player"  && other.GetComponent<PlayerController>().consT != null)
 		{
 			other.GetComponent<PlayerController>().consT.text = "Tu as besoin de " + key;
 		}

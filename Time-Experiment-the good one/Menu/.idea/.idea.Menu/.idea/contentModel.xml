@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+<<<<<<< HEAD
     <e p="C:\Users\Jérémie\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_Menu.-970657752.00" t="ExcludeRecursive" />
     <e p="C:\Users\Jérémie\Documents\GitHub\Time-Experiment-487\Time-Experiment-the good one\Menu" t="IncludeRecursive">
+=======
+    <e p="C:\Users\nicoletriso\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_Menu.577851260.00" t="ExcludeRecursive" />
+    <e p="C:\Users\nicoletriso\Documents\GitHub\Time-Experiment-487\Time-Experiment-the good one\Menu" t="IncludeRecursive">
+>>>>>>> d3ca19bb8162e49075a25e3f408037bc9f0127f4
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -141,7 +146,13 @@
         <e p="Scripts" t="Include">
           <e p="CameraController.cs" t="Include" />
           <e p="Colorchange.cs" t="Include" />
+<<<<<<< HEAD
           <e p="DestroyByContact.cs" t="Include" />
+=======
+          <e p="EnemyAttack.cs" t="Include" />
+          <e p="EnemyHealth.cs" t="Include" />
+          <e p="EnemyMovement.cs" t="Include" />
+>>>>>>> d3ca19bb8162e49075a25e3f408037bc9f0127f4
           <e p="Fouille.cs" t="Include" />
           <e p="LoadScene.cs" t="Include" />
           <e p="Manager.cs" t="Include" />
@@ -151,6 +162,7 @@
           <e p="MoveLaser.cs" t="Include" />
           <e p="Mover.cs" t="Include" />
           <e p="openDoor.cs" t="Include" />
+          <e p="playerAttack.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="PlayerMotor.cs" t="Include" />
           <e p="PlayerStat.cs" t="Include" />
