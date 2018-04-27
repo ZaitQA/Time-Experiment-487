@@ -13,7 +13,6 @@ public class playerAttack : PlayerStat
 	{
 		couldownTime = GetComponent<PlayerStat>().TimeBetweenAttack;
 		timer += Time.deltaTime;
-		Debug.Log(timer);
 		attack = GetComponent<PlayerStat>().attack;
 		if (Input.GetMouseButtonDown(1) && timer >= couldownTime)
 		{

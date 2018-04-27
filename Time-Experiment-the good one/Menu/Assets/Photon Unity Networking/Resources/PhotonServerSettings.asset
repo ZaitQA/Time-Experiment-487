@@ -39,5 +39,4 @@ MonoBehaviour:
   - CloseDoor
   - OpenDoor
   - enemmymov
-  - Move
   DisableAutoOpenWizard: 1

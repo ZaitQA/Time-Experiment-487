@@ -35,11 +35,13 @@ public class Manager : MonoBehaviour
 		j.name = "Player" + nbPlayer;
 		
 		j.GetComponent<PlayerStat>().enabled = true;
+		j.GetComponent<Tir>().enabled = true;
 		j.GetComponent<Fouille>().enabled = true;
 		j.GetComponent<PlayerController>().enabled = true;
 		j.GetComponent<PlayerMotor>().enabled = true;
 		j.GetComponent<SpellController>().enabled = true;
 		j.GetComponent<playerAttack>().enabled = true;
+
 
 
 	}

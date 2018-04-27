@@ -7,8 +7,9 @@ public class EnemyHealth : MonoBehaviour
     public float currentHealth;                   // The current health the enemy has.
     public float sinkSpeed = 2.5f;
     private GameObject player;
-    private playerAttack _playerAttack;
-    
+    private float _playerAttack;
+
+    private bool isgun;
     BoxCollider boxCollider;            // Reference to the capsule collider.
     bool isDead;                                // Whether the enemy is dead.
     bool isSinking;                             // Whether the enemy has started sinking through the floor.
@@ -21,39 +22,47 @@ public class EnemyHealth : MonoBehaviour
 
         // Setting the current health when the enemy first spawns.
         currentHealth = startingHealth;
+        
     }
 
     void Update ()
     {
         player =  player = GameObject.FindGameObjectWithTag ("Player");
-        _playerAttack = player.GetComponent<playerAttack>();
-        GetComponent<EnemyHealth>().currentHealth = currentHealth;
-       
-        if(isSinking)
-        {
-            transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
-        }
-        if (playerAttack.Attacked)
-        {
-            TakeDamage(_playerAttack.attack);
-        }
-    }
-
-    public void TakeDamage (float amount)
-    {
-
-        float dis = Vector3.Distance(transform.position, player.transform.position);
-        if (dis < 1.5)
-        {
-            currentHealth -= amount;
-            Debug.Log(amount);
-            playerAttack.Attacked = false;
-        }
+        _playerAttack = player.GetComponent<PlayerStat>().attack;
         if(currentHealth <= 0)
         {
             Death ();
             StartSinking();
         }
+        Debug.Log(playerAttack.Attacked);
+        if (Tir.Isgun == false && playerAttack.Attacked )
+        {
+         
+            TakeDamage(_playerAttack);
+        
+        }
+    }
+
+    public void TakeDamage (float amount)
+    {
+        float dis = Vector3.Distance(transform.position, player.transform.position);
+        if (dis < 1.5)
+        {
+            currentHealth -= amount;
+            playerAttack.Attacked = false;
+        }
+       
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+     
+        if (other.tag == "shot")
+        {
+            currentHealth -= _playerAttack + 5;
+            Destroy(other.gameObject);
+        }
+        
     }
 
     void Death ()

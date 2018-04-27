@@ -17,7 +17,8 @@ public class Mover : MonoBehaviour {
 		if (other.tag == "wall")
 		{
 			Destroy(gameObject);
-			Debug.Log("Boom");
 		}
 	}
+
+	
 }

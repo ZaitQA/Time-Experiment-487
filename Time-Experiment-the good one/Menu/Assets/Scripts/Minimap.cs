@@ -12,17 +12,17 @@ public class Minimap : MonoBehaviour {
 	public GameObject Player;
 	void Start ()
 	{
-		/*playert = GameObject.Find("Player1").transform;*/
+		playert = GameObject.Find("Player1").transform;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		/*while(playert == null)
+		while(playert == null)
 			playert = GameObject.Find("Player1").transform;
 		
 		Vector3 newPos = playert.position;
 		newPos.y = transform.position.y;
-		transform.position = newPos;*/
+		transform.position = newPos;
 	}
 }

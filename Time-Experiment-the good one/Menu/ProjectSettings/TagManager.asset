@@ -13,6 +13,7 @@ TagManager:
   - exit
   - wall
   - shot
+  - 'Enemy '
   layers:
   - Default
   - TransparentFX
