@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public class PlayerController : PlayerStat
 	public Camera cam;
 	public LayerMask mask;
 
+	public float TimerT;
 	private PlayerMotor motor;
 
 	private GameObject HP;
@@ -42,8 +44,7 @@ public class PlayerController : PlayerStat
 
 	void Start()
 	{
-
-
+		TimerT = 2.0f;
 		Life = GetComponent<PlayerStat>().Life;
 		energieV = GetComponent<PlayerStat>().energieV;
 		nbPlayer = GameObject.Find("Manager").GetComponent<Manager>().nbPlayer;
@@ -88,7 +89,7 @@ public class PlayerController : PlayerStat
 
 	void Update()
 	{
-
+		NbrCOmpétence = GetComponent<PlayerStat>().NbrCOmpétence;
 		if (deadd)
 		{
 			deadText.SetActive(true);
@@ -148,7 +149,15 @@ public class PlayerController : PlayerStat
 				vie.value = (float) Life / maxlife;
 				energie.value = (float) energieV / maxenergie;
 			
-
+			if (Input.GetKeyDown(KeyCode.I))
+			{
+				int index2 = index + 1;
+				GetComponent<PlayerController>().consT.text = index2 + ":" + inventaire[index];
+				index += 1;
+				if (index > inventaire.Length)
+				{index = 0;}
+			}
+		
 		}
 	}
 
@@ -156,8 +165,14 @@ public class PlayerController : PlayerStat
 	{
 		if (other.tag == "exit")
 		{
-			PhotonNetwork.Disconnect();
-			GameObject.Find("Manager").GetComponent<LoadScene>().LoadScenes(4);
+			GetComponent<PlayerController>().consT.text = "You have : " + " " + NbrCOmpétence + " " + "competence point";
+			Debug.Log(TimerT);
+			if (TimerT <= 0)
+			{
+				PhotonNetwork.Disconnect();
+				GameObject.Find("Manager").GetComponent<LoadScene>().LoadScenes(4);
+			}
+			TimerT -= Time.deltaTime;
 		}
 	}
 

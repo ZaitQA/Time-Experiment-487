@@ -24,9 +24,13 @@ public class SpellController : PlayerStat
 	private GameObject j;
 	private GameObject p;
 	private Camera cam1;
+	private GameObject tp;
+	private float effect;
+	private bool effect2;
 	
 	void Start ()
 	{
+		effect = 1;
 		this.Speed2 = GetComponent<NavMeshAgent>().speed;
 		this.Accelerate2 =  GetComponent<NavMeshAgent>().acceleration;
 		this.defence2 = GetComponent<PlayerStat>().defence;
@@ -48,6 +52,19 @@ public class SpellController : PlayerStat
 		if (Protection)
 		{FuncProtection();}
 			
+		if (effect2)
+		{
+			if (effect <= 0)
+			{
+				Debug.Log(effect);
+				tp.transform.position = new Vector3(71871, 981, 9812);
+				effect = 2;
+				effect2 = false;
+			}
+			effect -= Time.deltaTime;
+
+		}
+		
 		if (Input.GetKeyDown(KeyCode.Keypad1))
 		{
 			if (GetComponent<PlayerController>().energieV >= 20)
@@ -148,40 +165,45 @@ public class SpellController : PlayerStat
 
 		if (Teleport)
 		{
-		    if (Input.GetMouseButton(0))
-				{
-					
-					cam1 = GetComponent<PlayerController>().cam;
-					Ray ray = cam1.ScreenPointToRay(Input.mousePosition);
-					RaycastHit hit;
-					if (Physics.Raycast(ray, out hit))
-					{
-						dis = Vector3.Distance(hit.point, transform.position);
+			if (Input.GetMouseButton(0))
+			{
 
-					}
-					if (dis < 20)
-					{
-						GetComponent<NavMeshAgent>().speed = 5000;
-						GetComponent<NavMeshAgent>().acceleration = 10000;
-						count += 1;
-					}
-					if (dis > 20)
-					{
-						GetComponent<PlayerController>().consT.text = "To far";
-					}
+				cam1 = GetComponent<PlayerController>().cam;
+				Ray ray = cam1.ScreenPointToRay(Input.mousePosition);
+				RaycastHit hit;
+				if (Physics.Raycast(ray, out hit))
+				{
+					dis = Vector3.Distance(hit.point, transform.position);
+
+				}
+				if (dis < 20)
+				{
+					effect2 = true;
+					tp = GameObject.FindWithTag("tp");
+					tp.transform.position = hit.point;
+					GetComponent<NavMeshAgent>().speed = 5000;
+					GetComponent<NavMeshAgent>().acceleration = 10000;
+					count += 1;
+				}
+				if (dis > 20)
+				{
+					GetComponent<PlayerController>().consT.text = "To far";
 				}
 			}
-			if (count > Nbteleport)
-			{
-				count = 0;
-			    Teleport = false;
-			}
-		
+		}
+		if (count > Nbteleport)
+		{
+			count = 0;
+			Teleport = false;
+		}
+
 		if (Teleport == false)
 		{
+			
 			GetComponent<NavMeshAgent>().speed = Speed2;
 			GetComponent<NavMeshAgent>().acceleration = Accelerate2;
 		}
+		
 	}
 
 	public void FuncProtection()

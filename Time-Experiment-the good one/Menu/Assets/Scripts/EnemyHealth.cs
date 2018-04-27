@@ -34,7 +34,7 @@ public class EnemyHealth : MonoBehaviour
             Death ();
             StartSinking();
         }
-        Debug.Log(playerAttack.Attacked);
+      
         if (Tir.Isgun == false && playerAttack.Attacked )
         {
          
