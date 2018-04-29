@@ -5,6 +5,7 @@ using System.Collections;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMovement : MonoBehaviour
 {
+
 	private GameObject player;               // Reference to the player's position.
 	PlayerController playerHealth;      // Reference to the player's health.
 	EnemyHealth enemyHealth;        // Reference to this enemy's health.
@@ -13,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
 
 	void Update()
 	{
+<<<<<<< HEAD
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerHealth = player.GetComponent <PlayerController> ();
 		enemyHealth = GetComponent <EnemyHealth> ();
@@ -21,12 +23,19 @@ public class EnemyMovement : MonoBehaviour
 			GetComponent<NavMeshAgent>().enabled = true;
 
 		if (enemyHealth.currentHealth > 0 && playerHealth.Life > 0) 
+=======
+		player = GameObject.FindGameObjectWithTag("Player");
+		playerHealth = player.GetComponent<PlayerController>();
+		enemyHealth = GetComponent<EnemyHealth>();
+		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+		if (enemyHealth.currentHealth > 0 && playerHealth.Life > 0)
+>>>>>>> e763abeac55942aff9982c4a511e302c30c6653b
 		{
 			float distance = Vector3.Distance(transform.position, player.transform.position);
-			if(distance < 8 && SpellController.Stune == false)
-			PhotonView.Get(this).RPC("enemmymov", PhotonTargets.All);
+			if (distance < 8 && SpellController.Stune == false)
+				PhotonView.Get(this).RPC("enemmymov", PhotonTargets.All);
 		}
-		// Otherwise...
+	
 		else
 		{
 			agent.enabled = false;
