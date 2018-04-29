@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net.Security;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class PlayerStat : MonoBehaviour
@@ -29,7 +30,6 @@ public class PlayerStat : MonoBehaviour
 	private int Nbteleportadd;
 	private float energieadd;
 
-
 	 void Start()
 	{
 	    speed = PlayerPrefs.GetInt("speed") + 16f;
@@ -55,7 +55,7 @@ public class PlayerStat : MonoBehaviour
 		PlayerPrefs.DeleteKey("energie");
 		PlayerPrefs.DeleteKey("Nbteleport");
 		
-		NbrCOmpétence = 2;
+		NbrCOmpétence = 0;
 	}
 	
 	void Update ()
@@ -70,6 +70,10 @@ public class PlayerStat : MonoBehaviour
 		GetComponent<PlayerStat>().attack = attack;
 		GetComponent<PlayerStat>().defence = defence;
 		GetComponent<PlayerStat>().Nbteleport = Nbteleport;
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			GetComponent<PlayerController>().consT.text = "You have : " + " " + NbrCOmpétence + " " + "competence point";
+		}
 	}
 
 	public void Stuneadd()

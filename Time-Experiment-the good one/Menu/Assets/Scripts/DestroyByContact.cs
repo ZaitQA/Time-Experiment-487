@@ -18,7 +18,7 @@ public class DestroyByContact : MonoBehaviour {
 		if (other.tag == "shot")
 		{
 			Destroy(other.gameObject);
-			Debug.Log("Boom");
+		
 		}
 	}
 }
