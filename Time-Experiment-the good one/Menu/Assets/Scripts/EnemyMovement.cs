@@ -17,6 +17,9 @@ public class EnemyMovement : MonoBehaviour
 		playerHealth = player.GetComponent <PlayerController> ();
 		enemyHealth = GetComponent <EnemyHealth> ();
 		agent = GetComponent <UnityEngine.AI.NavMeshAgent> ();
+		if(!GetComponent<NavMeshAgent>().enabled)
+			GetComponent<NavMeshAgent>().enabled = true;
+
 		if (enemyHealth.currentHealth > 0 && playerHealth.Life > 0) 
 		{
 			float distance = Vector3.Distance(transform.position, player.transform.position);

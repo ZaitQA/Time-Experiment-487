@@ -180,7 +180,7 @@ public class PlayerController : PlayerStat
 	{
 		if (other.tag == "laser")
 		{
-			Life -= 25;
+			Life -= 5;
 
 		}
 	}
