@@ -33,6 +33,7 @@ public class EnemyMovement : MonoBehaviour
 		{
 			GetComponent<NavMeshAgent>().enabled = true;
 		}
+		
 		if (enemyHealth.currentHealth > 0 && playerHealth.Life > 0) 
 		{
 			float distance = Vector3.Distance(transform.position, player.transform.position);
@@ -43,11 +44,11 @@ public class EnemyMovement : MonoBehaviour
 
 		}
 			// Otherwise...
-			else
-			{
-				agent.enabled = false;
-			}
+		else
+		{
+			agent.enabled = false;
 		}
+	}
 
 	
 	[PunRPC]
@@ -57,12 +58,5 @@ public class EnemyMovement : MonoBehaviour
 		anim.SetBool("walk", true);
 		agent.SetDestination(player.transform.position);
 		
-	}
-
-	private void OnTriggerStay(Collider other)
-	{
-		if(other.tag == "Player")
-			anim.SetBool("walk", false);
-
 	}
 }

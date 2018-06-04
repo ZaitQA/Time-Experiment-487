@@ -774,6 +774,7 @@ GameObject:
   - component: {fileID: 114813130702020592}
   - component: {fileID: 114627569468666392}
   - component: {fileID: 82665327926681874}
+  - component: {fileID: 114519178803314782}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2591,6 +2592,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950e65e0f1d85974fb61afacb906195c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114519178803314782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1563277933375068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a24761b038aa3b4f9ae183fc9c226ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114622525113779748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2637,8 +2649,7 @@ MonoBehaviour:
   speed1: 0
   Nbteleport: 0
   energieV: 0
-  defenceS: 0
-  Protectiondd: 0
+  spellDefence: 0
   TimeBetweenAttack: 0
   "NbrCOmp\xE9tence": 0
   count: 0
@@ -2679,8 +2690,7 @@ MonoBehaviour:
   speed1: 0
   Nbteleport: 0
   energieV: 100
-  defenceS: 0
-  Protectiondd: 0
+  spellDefence: 0
   TimeBetweenAttack: 0
   "NbrCOmp\xE9tence": 0
   cam: {fileID: 0}
@@ -2774,8 +2784,7 @@ MonoBehaviour:
   speed1: 0
   Nbteleport: 0
   energieV: 0
-  defenceS: 0
-  Protectiondd: 0
+  spellDefence: 0
   TimeBetweenAttack: 0
   "NbrCOmp\xE9tence": 0
 --- !u!114 &114919439291158570
@@ -2825,8 +2834,7 @@ MonoBehaviour:
   speed1: 0
   Nbteleport: 0
   energieV: 0
-  defenceS: 0
-  Protectiondd: 0
+  spellDefence: 0
   TimeBetweenAttack: 1
   "NbrCOmp\xE9tence": 0
   couldownTime: 0

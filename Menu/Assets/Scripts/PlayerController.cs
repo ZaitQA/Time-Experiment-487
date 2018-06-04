@@ -52,13 +52,13 @@ public class PlayerController : PlayerStat
 	public AudioClip rip;
 	public GameObject[] boules;
 	public Slider vieSlide;
+	public bool boolAnim1;
+	public bool boolAnim2;
 	
-void Start()
-{
-
-
-	armes[0] = "assaut";
-	boules = new GameObject[4];
+	void Start()
+	{
+		armes[0] = "assaut";
+		boules = new GameObject[4];
 		Life = GetComponent<PlayerStat>().Life;
 		energieV = GetComponent<PlayerStat>().energieV;
 		nbPlayer = GameObject.Find("Manager").GetComponent<Manager>().nbPlayer;
@@ -102,6 +102,8 @@ void Start()
 		Anim = avatar.GetComponent<Animator>();
 		agent = GetComponent<NavMeshAgent>();
 
+		boolAnim1 = true;
+		boolAnim2 = true;
 	}
 
 	void Update()
@@ -109,8 +111,10 @@ void Start()
 		soundDeath = GetComponent<AudioSource>();
 		if (transform.position.x == hitpoint.x && transform.position.z == hitpoint.z)
 		{
-			Anim.SetBool("walk", false);
-			Anim.SetBool("run", false);
+			boolAnim1 = true;
+			boolAnim2 = true;
+			PhotonView.Get(this).RPC("PlayAnimWalk", PhotonTargets.All, false);
+			PhotonView.Get(this).RPC("PlayAnimRun", PhotonTargets.All, false);
 
 		}
 
@@ -138,11 +142,16 @@ void Start()
 				if (Physics.Raycast(ray, out hit, 100000, mask))
 				{
 					hitpoint = hit.point;
-					if(!GetComponent<SpellController>().run)
-						Anim.SetBool("walk", true);
-					else
+					if (!GetComponent<SpellController>().run && boolAnim1)
 					{
-						Anim.SetBool("run", true);
+						PhotonView.Get(this).RPC("PlayAnimWalk", PhotonTargets.All, true);
+						boolAnim1 = false;
+					}
+						
+					else if (GetComponent<SpellController>().run && boolAnim2)
+					{
+						PhotonView.Get(this).RPC("PlayAnimRun", PhotonTargets.All, true);
+						boolAnim2 = false;
 					}
 					motor.MoveToPoint(hit.point);
 					
@@ -209,7 +218,9 @@ void Start()
 			}
 
 			vieSlide.value = Life / maxlife;
+			if(vie != null)
 				vie.value = (float) Life / maxlife;
+			if(energie != null)
 				energie.value = (float) energieV / maxenergie;
 			if (Input.GetKeyDown(KeyCode.I))
 			{
@@ -224,6 +235,18 @@ void Start()
 		}
 	}
 
+	[PunRPC]
+	public void PlayAnimWalk(bool a)
+	{
+		Anim.SetBool("walk", a);
+	}
+
+	[PunRPC]
+	public void PlayAnimRun(bool a)
+	{
+		Anim.SetBool("run", a);
+	}
+	
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "exit")

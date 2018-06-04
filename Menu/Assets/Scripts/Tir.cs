@@ -52,32 +52,32 @@ public class Tir : MonoBehaviour {
 			{
 				soundGun.clip = pan;
 				soundGun.Play();
-				Instantiate(pistolet, ShotSpawn.position, ShotSpawn.rotation);
+				PhotonNetwork.Instantiate("Capsule", ShotSpawn.position, ShotSpawn.rotation, 0);
 				nextFire = Time.time + fireRate;
 			}
 			if (arme == "assaut")
 			{
 				soundGun.clip = pan;
 				soundGun.Play();
-				Instantiate(pistolet, ShotSpawn.position, ShotSpawn.rotation);
+				PhotonNetwork.Instantiate("Capsule", ShotSpawn.position, ShotSpawn.rotation,0);
 				nextFire = Time.time + fireRate;
 			}
 			if (arme == "pompe")
 			{
 				soundGun.clip = pan;
 				soundGun.Play();
-				Instantiate(pistolet, ShotSpawn.position,
-					new Quaternion(ShotSpawn.rotation.x + 0.1f, ShotSpawn.rotation.y, ShotSpawn.rotation.z, ShotSpawn.rotation.w));
-				Instantiate(pistolet, ShotSpawn.position,
-					new Quaternion(ShotSpawn.rotation.x, ShotSpawn.rotation.y + 0.1f, ShotSpawn.rotation.z, ShotSpawn.rotation.w));
-				Instantiate(pistolet, ShotSpawn.position,
-					new Quaternion(ShotSpawn.rotation.x, ShotSpawn.rotation.y, ShotSpawn.rotation.z + 0.1f, ShotSpawn.rotation.w));
-				Instantiate(pistolet, ShotSpawn.position,
-					new Quaternion(ShotSpawn.rotation.x - 0.1f, ShotSpawn.rotation.y, ShotSpawn.rotation.z, ShotSpawn.rotation.w));
-				Instantiate(pistolet, ShotSpawn.position,
-					new Quaternion(ShotSpawn.rotation.x, ShotSpawn.rotation.y - 0.1f, ShotSpawn.rotation.z, ShotSpawn.rotation.w));
-				Instantiate(pistolet, ShotSpawn.position,
-					new Quaternion(ShotSpawn.rotation.x, ShotSpawn.rotation.y, ShotSpawn.rotation.z - 0.1f, ShotSpawn.rotation.w));
+				PhotonNetwork.Instantiate("Capsule", ShotSpawn.position,
+					new Quaternion(ShotSpawn.rotation.x + 0.1f, ShotSpawn.rotation.y, ShotSpawn.rotation.z, ShotSpawn.rotation.w),0);
+				PhotonNetwork.Instantiate("Capsule", ShotSpawn.position,
+					new Quaternion(ShotSpawn.rotation.x, ShotSpawn.rotation.y + 0.1f, ShotSpawn.rotation.z, ShotSpawn.rotation.w),0);
+				PhotonNetwork.Instantiate("Capsule", ShotSpawn.position,
+					new Quaternion(ShotSpawn.rotation.x, ShotSpawn.rotation.y, ShotSpawn.rotation.z + 0.1f, ShotSpawn.rotation.w),0);
+				PhotonNetwork.Instantiate("Capsule", ShotSpawn.position,
+					new Quaternion(ShotSpawn.rotation.x - 0.1f, ShotSpawn.rotation.y, ShotSpawn.rotation.z, ShotSpawn.rotation.w),0);
+				PhotonNetwork.Instantiate("Capsule", ShotSpawn.position,
+					new Quaternion(ShotSpawn.rotation.x, ShotSpawn.rotation.y - 0.1f, ShotSpawn.rotation.z, ShotSpawn.rotation.w),0);
+				PhotonNetwork.Instantiate("Capsule", ShotSpawn.position,
+					new Quaternion(ShotSpawn.rotation.x, ShotSpawn.rotation.y, ShotSpawn.rotation.z - 0.1f, ShotSpawn.rotation.w),0);
 
 
 				nextFire = Time.time + fireRate;
@@ -85,6 +85,7 @@ public class Tir : MonoBehaviour {
 
 		}
 	}
+
 
 	public static bool Isgun
 	{

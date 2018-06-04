@@ -30,4 +30,9 @@ public class Mover : MonoBehaviour {
 	}
 
 	
+		
+	
+	
+
+	
 }

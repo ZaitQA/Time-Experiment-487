@@ -582,6 +582,7 @@ GameObject:
   - component: {fileID: 114312122012109254}
   - component: {fileID: 114317052233295580}
   - component: {fileID: 82661473423359970}
+  - component: {fileID: 114803214429325556}
   m_Layer: 0
   m_Name: PlayerT
   m_TagString: Player
@@ -2727,8 +2728,7 @@ MonoBehaviour:
   speed1: 0
   Nbteleport: 0
   energieV: 100
-  defenceS: 0
-  Protectiondd: 0
+  spellDefence: 0
   TimeBetweenAttack: 0
   "NbrCOmp\xE9tence": 0
   cam: {fileID: 0}
@@ -2795,8 +2795,7 @@ MonoBehaviour:
   speed1: 0
   Nbteleport: 0
   energieV: 0
-  defenceS: 0
-  Protectiondd: 0
+  spellDefence: 0
   TimeBetweenAttack: 0
   "NbrCOmp\xE9tence": 0
   count: 0
@@ -2879,8 +2878,7 @@ MonoBehaviour:
   speed1: 0
   Nbteleport: 0
   energieV: 0
-  defenceS: 0
-  Protectiondd: 0
+  spellDefence: 0
   TimeBetweenAttack: 0
   "NbrCOmp\xE9tence": 0
 --- !u!114 &114652843605401508
@@ -2903,8 +2901,7 @@ MonoBehaviour:
   speed1: 0
   Nbteleport: 0
   energieV: 0
-  defenceS: 0
-  Protectiondd: 0
+  spellDefence: 0
   TimeBetweenAttack: 1
   "NbrCOmp\xE9tence": 0
   couldownTime: 0
@@ -2924,6 +2921,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &114803214429325556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1483011039544160}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a24761b038aa3b4f9ae183fc9c226ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  realPosition: {x: 0, y: 0, z: 0}
+  positionAtLastPacket: {x: 0, y: 0, z: 0}
+  currentTime: 0
+  currentPacketTime: 0
+  lastPacketTime: 0
+  timeToReachGoal: 0
 --- !u!114 &114870901048419664
 MonoBehaviour:
   m_ObjectHideFlags: 1

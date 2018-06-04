@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
@@ -26,12 +27,10 @@ public class EnemyHealth : MonoBehaviour
 
         // Setting the current health when the enemy first spawns.
         currentHealth = startingHealth;
-
-        
         
     }
 
-    void Update ()
+    void Update ()                            
     {
         health.value = currentHealth / startingHealth;
         player =  player = GameObject.FindGameObjectWithTag ("Player");
@@ -42,35 +41,28 @@ public class EnemyHealth : MonoBehaviour
             Death ();
          
         }
-        if (Tir.Isgun == false && playerAttack.Attacked )
-        {
-         
-            TakeDamage(_playerAttack);
-        
-        }
+      
     }
-
-    public void TakeDamage (float amount)
-    {
-        float dis = Vector3.Distance(transform.position, player.transform.position);
-        if (dis < 1.5)
-        {
-            currentHealth -= amount;
-            playerAttack.Attacked = false;
-        }
-       
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
-     
         if (other.tag == "shot")
         {
-            currentHealth -= _playerAttack + 40;
+            PhotonView.Get(this).RPC("takeDamage", PhotonTargets.All);
             Destroy(other.gameObject);
         }
-        
     }
+
+    [PunRPC]
+    public void takeDamage()
+    {
+        currentHealth -= _playerAttack + 40;
+        
+       
+    }
+
+  
 
     void Death ()
     {
