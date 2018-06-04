@@ -8,37 +8,84 @@ public class Tir : MonoBehaviour {
 	public int speed;
 	public int tilt;
 	private static bool isgun;
-	public static string[] inventaire;
+	public static string arme;
 
-	public GameObject shot;
+	public GameObject pistolet;
 	public Transform ShotSpawn;
 	
 	private AudioSource soundGun;
+
 	public AudioClip pan;
+	public AudioClip assaut;
+	public AudioClip pompe;
 
 	public float fireRate = 0.5f;
 	private float nextFire = 0.0f;
+	public static string[] inventaire;
+
+
 
 	void Update()
 	{
 		soundGun = GetComponent<AudioSource>();
-		inventaire = GetComponent<PlayerController>().Inventaire;
-		if(isgun == false)
-			foreach (string objet in inventaire)
-			{
-				if (objet == "Pistolet")
-					isgun = true;
-			}
+		arme = GetComponent<PlayerController>().armes[0];
+
+		if (arme == "pistolet")
+		{
+			isgun = true;
+			fireRate = 0.75f;
+		}
+		if (arme == "assaut")
+		{
+			isgun = true;
+			fireRate = 0.3f;
+		}
+		if (arme == "pompe")
+		{
+			isgun = true;
+			fireRate = 1.5f;
+		}
+
 		if (Input.GetButton("Fire2") && Time.time > nextFire && isgun)
 		{
-			soundGun.clip = pan;
-			soundGun.Play();
-			Instantiate(shot, ShotSpawn.position, ShotSpawn.rotation);
-			nextFire = Time.time + fireRate;
+			if (arme == "pistolet")
+			{
+				soundGun.clip = pan;
+				soundGun.Play();
+				Instantiate(pistolet, ShotSpawn.position, ShotSpawn.rotation);
+				nextFire = Time.time + fireRate;
+			}
+			if (arme == "assaut")
+			{
+				soundGun.clip = pan;
+				soundGun.Play();
+				Instantiate(pistolet, ShotSpawn.position, ShotSpawn.rotation);
+				nextFire = Time.time + fireRate;
+			}
+			if (arme == "pompe")
+			{
+				soundGun.clip = pan;
+				soundGun.Play();
+				Instantiate(pistolet, ShotSpawn.position,
+					new Quaternion(ShotSpawn.rotation.x + 0.1f, ShotSpawn.rotation.y, ShotSpawn.rotation.z, ShotSpawn.rotation.w));
+				Instantiate(pistolet, ShotSpawn.position,
+					new Quaternion(ShotSpawn.rotation.x, ShotSpawn.rotation.y + 0.1f, ShotSpawn.rotation.z, ShotSpawn.rotation.w));
+				Instantiate(pistolet, ShotSpawn.position,
+					new Quaternion(ShotSpawn.rotation.x, ShotSpawn.rotation.y, ShotSpawn.rotation.z + 0.1f, ShotSpawn.rotation.w));
+				Instantiate(pistolet, ShotSpawn.position,
+					new Quaternion(ShotSpawn.rotation.x - 0.1f, ShotSpawn.rotation.y, ShotSpawn.rotation.z, ShotSpawn.rotation.w));
+				Instantiate(pistolet, ShotSpawn.position,
+					new Quaternion(ShotSpawn.rotation.x, ShotSpawn.rotation.y - 0.1f, ShotSpawn.rotation.z, ShotSpawn.rotation.w));
+				Instantiate(pistolet, ShotSpawn.position,
+					new Quaternion(ShotSpawn.rotation.x, ShotSpawn.rotation.y, ShotSpawn.rotation.z - 0.1f, ShotSpawn.rotation.w));
+
+
+				nextFire = Time.time + fireRate;
+			}
 
 		}
 	}
-	
+
 	public static bool Isgun
 	{
 		get { return isgun; }

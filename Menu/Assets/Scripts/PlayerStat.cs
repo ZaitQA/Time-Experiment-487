@@ -6,44 +6,33 @@ using UnityEngine;
 
 public class PlayerStat : MonoBehaviour
 {
-	public float attack;
+	public float attack = 10;
 	public float defence;
-	public float TimerS;
-	public float Life;
-	public float TimerA;
-	public float TimerP;
-	public float speed1;
-	public int Nbteleport;
-	public float energieV;
-	public float defenceS;
-	public int Protectiondd;
+	public float TimerS = 5;
+	public float Life = 100;
+	public float TimerA = 3f;
+	public float TimerP = 5;
+	public float speed1 = 16;
+	public int Nbteleport = 1;
+	public float energieV = 100;
+	public float spellDefence;
 	public float TimeBetweenAttack;
-	public int NbrCOmpétence;
-
-	private float attackadd;
-	private float defenceadd;
-	private float TimerSadd;
-	private float lifeadd;
-	private float TimerAadd;
-	private float speedadd;
-	private int Nbteleportadd;
-	private float energieadd;
-
+	public int NbrCOmpétence = 1;
 
 	 void Start()
 	{
-	    speed1 = PlayerPrefs.GetInt("speed") + 16f;
-		TimerA = PlayerPrefs.GetInt("accelerate") + 3f;
-		TimerS = PlayerPrefs.GetInt("Stune") + 5f;
-		TimerP = PlayerPrefs.GetInt("TimerP");
-		attack =  PlayerPrefs.GetInt("attack") + 10f;
-		defence += PlayerPrefs.GetInt("defence") + 0f;
-		defenceS += PlayerPrefs.GetInt("defenceS") + 0f;
-		Life = PlayerPrefs.GetInt("life") + 100;
-		energieV = PlayerPrefs.GetInt("energie") + 100;
-		Nbteleport = PlayerPrefs.GetInt("Nbteleport") + 1;
+	    speed1 = 16 + PlayerPrefs.GetInt("speed") + PlayerPrefs.GetFloat("SaveSpeed")  ;
+		TimerA = 3 +  PlayerPrefs.GetInt("accelerate") + PlayerPrefs.GetFloat("SaveAcc") ;
+		TimerS = 5 + PlayerPrefs.GetInt("Stune") + PlayerPrefs.GetFloat("SaveStune") ;
+		TimerP = 5 + PlayerPrefs.GetInt("TimerP") + PlayerPrefs.GetFloat("SaveTp") ;
+		attack =  10 + PlayerPrefs.GetInt("attack") + PlayerPrefs.GetFloat("SaveAttzck") ;
+		defence = PlayerPrefs.GetInt("defence") + PlayerPrefs.GetFloat("SaveDe") ;
+		spellDefence = PlayerPrefs.GetInt("Spelldefence") + PlayerPrefs.GetFloat("SaveSD") ;
+		Life = 100 + PlayerPrefs.GetInt("life") + PlayerPrefs.GetFloat("LifeS") ;
+		energieV = 100 + PlayerPrefs.GetInt("energie") + PlayerPrefs.GetFloat("SaveE") ;
+		Nbteleport = 1 + PlayerPrefs.GetInt("Nbteleport") + PlayerPrefs.GetInt("SaveNBT") ;
+		
 		TimeBetweenAttack = 2;
-		Protectiondd = PlayerPrefs.GetInt("Protection");
 		
 		PlayerPrefs.DeleteKey("speed");
 		PlayerPrefs.DeleteKey("accelerate");
@@ -54,30 +43,32 @@ public class PlayerStat : MonoBehaviour
 		PlayerPrefs.DeleteKey("life");
 		PlayerPrefs.DeleteKey("energie");
 		PlayerPrefs.DeleteKey("Nbteleport");
+		PlayerPrefs.DeleteKey("defenceS");
+		
+		PlayerPrefs.SetFloat("SaveSpeed", speed1 - 16);
+		PlayerPrefs.SetFloat("SaveAcc", TimerA - 3);
+		PlayerPrefs.SetFloat("SaveStune", TimerS - 5);
+		PlayerPrefs.SetFloat("SaveTp", TimerP - 5);
+		PlayerPrefs.SetFloat("SaveAttzck", attack - 10);
+		PlayerPrefs.SetFloat("SaveDe", defence - 0);
+		PlayerPrefs.SetFloat("SaveSD", spellDefence);
+		PlayerPrefs.SetFloat("LifeS", Life - 100) ;
+		PlayerPrefs.SetFloat("SaveE", energieV - 100);
+		PlayerPrefs.SetInt("SaveNBT", Nbteleport - 1);
 		
 		NbrCOmpétence = 2;
 	}
 	
 	void Update ()
 	{
-		GetComponent<PlayerStat>().Life = Life;
-		GetComponent<PlayerStat>().speed1 = speed1;
-		GetComponent<PlayerStat>().TimerA = TimerA;
-		GetComponent<PlayerStat>().TimerS = TimerS;
-		GetComponent<PlayerStat>().TimerP = TimerP;
-		GetComponent<PlayerStat>().defenceS = defenceS;
-		GetComponent<PlayerStat>().Protectiondd = Protectiondd;
-		GetComponent<PlayerStat>().attack = attack;
-		GetComponent<PlayerStat>().defence = defence;
-		GetComponent<PlayerStat>().Nbteleport = Nbteleport;
 	}
 
 	public void Stuneadd()
 	{
 		if (NbrCOmpétence >= 1)
 		{
-			PlayerPrefs.SetInt("Stune", 2);
-			NbrCOmpétence -= 1;
+			PlayerPrefs.SetInt("Stune",  5);
+            NbrCOmpétence -= 1;
 		}
 	}
 	public void Attackadd()
@@ -94,8 +85,7 @@ public void Defenceadd()
 {
 	if (NbrCOmpétence >= 1)
 	{
-		PlayerPrefs.SetInt("defence", 5);
-		Debug.Log(5);
+		PlayerPrefs.SetInt("defence", 5 );
 		NbrCOmpétence -= 1;
 	}
 }
@@ -148,11 +138,21 @@ public void EnergieAdd()
 		if (NbrCOmpétence >= 2)
 		{
 			PlayerPrefs.SetInt("TimerP", 3);
-			PlayerPrefs.SetInt("defenceS", 15);
+			PlayerPrefs.SetInt("Spelldefence",0);
 			PlayerPrefs.SetInt("Protection", 1);
 			NbrCOmpétence -= 2;
 		}
 	}
 
-
+	public void Ressurection()
+	{
+		if (PlayerPrefs.GetInt("Protection") == 1 && PlayerPrefs.GetInt("Resurection") == 1)
+		{
+			if (NbrCOmpétence >= 2)
+			{
+				PlayerPrefs.SetInt("Resurection", 1);
+				NbrCOmpétence -= 2;
+			}
+		}
+	}
 }

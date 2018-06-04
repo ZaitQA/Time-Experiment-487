@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -9,11 +10,13 @@ public class EnemyHealth : MonoBehaviour
     private GameObject player;
     private float _playerAttack;
 
+
     private bool isgun;
     BoxCollider boxCollider;            // Reference to the capsule collider.
     bool isDead;                                // Whether the enemy is dead.
     bool isSinking;                             // Whether the enemy has started sinking through the floor.
     //public AudioClip 
+    public Slider health;
 
 
     void Start()
@@ -23,11 +26,14 @@ public class EnemyHealth : MonoBehaviour
 
         // Setting the current health when the enemy first spawns.
         currentHealth = startingHealth;
+
+        
         
     }
 
     void Update ()
     {
+        health.value = currentHealth / startingHealth;
         player =  player = GameObject.FindGameObjectWithTag ("Player");
         _playerAttack = player.GetComponent<PlayerStat>().attack;
         if(currentHealth <= 0)
@@ -70,6 +76,9 @@ public class EnemyHealth : MonoBehaviour
     {
         // The enemy is dead.
         isDead = true;
+        health.gameObject.SetActive(false);
+        GetComponent<EnemyMovement>().anim.SetBool("die", true);
+        GetComponent<EnemyMovement>().anim.SetBool("walk", false);
 
         // Turn the collider into a trigger so shots can pass through it.
         boxCollider.isTrigger = true;
@@ -88,6 +97,6 @@ public class EnemyHealth : MonoBehaviour
         isSinking = true;
 
         // After 2 seconds destory the enemy.
-        Destroy (gameObject, 2f);
+        Destroy (gameObject, 4f);
     }
 }

@@ -35,6 +35,8 @@ public class PlayerController : PlayerStat
 	private GameObject Loading;
 
 	public string[] inventaire = new string[20];
+	public string[] armes = new string[3];
+	public int indexA = 1;
 	public int index = 0;
 	private GameObject m;
 
@@ -48,11 +50,15 @@ public class PlayerController : PlayerStat
 	private AudioSource sound;
 	private AudioSource soundDeath;
 	public AudioClip rip;
+	public GameObject[] boules;
+	public Slider vieSlide;
 	
 void Start()
-	{
+{
 
 
+	armes[0] = "assaut";
+	boules = new GameObject[4];
 		Life = GetComponent<PlayerStat>().Life;
 		energieV = GetComponent<PlayerStat>().energieV;
 		nbPlayer = GameObject.Find("Manager").GetComponent<Manager>().nbPlayer;
@@ -100,9 +106,7 @@ void Start()
 
 	void Update()
 	{
-
 		soundDeath = GetComponent<AudioSource>();
-		Debug.Log(transform.position + " / " + hitpoint);
 		if (transform.position.x == hitpoint.x && transform.position.z == hitpoint.z)
 		{
 			Anim.SetBool("walk", false);
@@ -131,7 +135,7 @@ void Start()
 			{
 				Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 				RaycastHit hit;
-				if (Physics.Raycast(ray, out hit, mask))
+				if (Physics.Raycast(ray, out hit, 100000, mask))
 				{
 					hitpoint = hit.point;
 					if(!GetComponent<SpellController>().run)
@@ -146,18 +150,20 @@ void Start()
 				
 
 			}
-			if (Input.GetMouseButton(1))
+			if (Input.GetMouseButton(2))
 			{
 				Ray ray1 = cam.ScreenPointToRay(Input.mousePosition);
 				RaycastHit hit1;
-				if (Physics.Raycast(ray1, out hit1))
+				if (Physics.Raycast(ray1, out hit1, 100000, mask) && Vector3.Distance(hit1.point, transform.position) >= 3)
 				{
 					transform.LookAt(hit1.point);
 
 				}
-				
+
 
 			}
+			
+
 			
 			if (Input.GetKeyDown(KeyCode.L))
 			{
@@ -186,12 +192,23 @@ void Start()
 			}
 			else if (Life <= 0)
 			{
-				soundDeath.clip = rip;
-				soundDeath.Play();
-				Life = 0;
-				deadd = true;
+				if (PlayerPrefs.GetInt("Resurection") == 1)
+				{
+					Life = 50;
+					energieV = 0;
+					consT.text = "Resurection !!!!!!!!!!!!!!!!!!!!!!";
+				}
+				else
+				{
+					soundDeath.clip = rip;
+					soundDeath.Play();
+					Life = 0;
+					deadd = true;
+				}
+
 			}
 
+			vieSlide.value = Life / maxlife;
 				vie.value = (float) Life / maxlife;
 				energie.value = (float) energieV / maxenergie;
 			if (Input.GetKeyDown(KeyCode.I))
@@ -218,6 +235,7 @@ void Start()
 		{
 			transform.position =  new Vector3(3.5f, -24, -39);
 		}
+
 	}
 
 	private void OnTriggerStay(Collider other)
@@ -231,6 +249,7 @@ void Start()
 				Life -= 1;
 			}
 		}
+
 	}
 
 
@@ -292,7 +311,7 @@ void Start()
 
 	private void Dead()
 	{
-		
+		vieSlide.gameObject.SetActive(false);
 		deadText.SetActive(true);
 		Cursor.visible = true;
 		Cursor.lockState = CursorLockMode.Confined;

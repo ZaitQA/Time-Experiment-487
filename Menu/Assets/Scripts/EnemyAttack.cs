@@ -47,7 +47,7 @@ public class EnemyAttack : MonoBehaviour
             attackDamage -= playerHealth.defence;
             if (SpellController.protection)
             {
-                attackDamage = attackDamage - playerHealth.defenceS;
+                attackDamage = attackDamage - playerHealth.defence;
             }
             playerHealth.Life -= attackDamage;
         }

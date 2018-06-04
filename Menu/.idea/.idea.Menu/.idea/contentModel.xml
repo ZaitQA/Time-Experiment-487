@@ -139,9 +139,12 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Billboard.cs" t="Include" />
           <e p="CameraController.cs" t="Include" />
+          <e p="ChangeBoule.cs" t="Include" />
           <e p="Colorchange.cs" t="Include" />
           <e p="DestroyByContact.cs" t="Include" />
+          <e p="DestroyByExit.cs" t="Include" />
           <e p="EnemyAttack.cs" t="Include" />
           <e p="EnemyHealth.cs" t="Include" />
           <e p="EnemyMovement.cs" t="Include" />
@@ -161,6 +164,7 @@
           <e p="Rotator.cs" t="Include" />
           <e p="SpawnLaser.cs" t="Include" />
           <e p="SpellController.cs" t="Include" />
+          <e p="SwitchArme.cs" t="Include" />
           <e p="Tir.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
@@ -227,6 +231,7 @@
             </e>
           </e>
         </e>
+        <e p="Tourelle.cs" t="Include" />
       </e>
       <e p="Library" t="ExcludeRecursive" />
       <e p="Menu.sln" t="IncludeFlat" />

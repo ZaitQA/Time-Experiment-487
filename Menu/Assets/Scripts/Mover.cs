@@ -18,6 +18,15 @@ public class Mover : MonoBehaviour {
 		{
 			Destroy(gameObject);
 		}
+		if (other.tag == "Player")
+		{
+			other.GetComponent<PlayerController>().Life -= 5;
+		}
+		if (other.tag == "Tourelle")
+		{
+			other.GetComponent<Tourelle>().health -= 15;
+			Destroy(gameObject);
+		}
 	}
 
 	

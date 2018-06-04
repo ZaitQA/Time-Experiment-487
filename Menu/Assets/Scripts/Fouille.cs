@@ -23,6 +23,10 @@ public class Fouille : MonoBehaviour
 		{
 			consT.text = "Appuyez sur la touche R pour ramasser la clé.";
 		}
+		if (other.tag == "Boule" && tag == "Player" && consT != null)
+		{
+			consT.text = "Appuyez sur la touche K pour changer la couleur de la boule.";
+		}
 	}
 
 	private void OnTriggerStay(Collider other)
@@ -55,6 +59,10 @@ public class Fouille : MonoBehaviour
 				Debug.Log(index);
 				consT.text = "Tu as ramassé la clé " + other.name;
 
+		}
+		else if (other.tag == "Boule" && Input.GetKeyDown(KeyCode.K) && consT != null)
+		{
+			other.GetComponent<ChangeBoule>().index += 1;
 		}
 		
 

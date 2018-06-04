@@ -11,15 +11,20 @@ public class EnemyMovement : MonoBehaviour
 	private NavMeshAgent agent;               // Reference to the nav mesh agent.
 	public AudioClip Detect;
 	public AudioSource detect;
+	public GameObject ennemi;
+	public Animator anim;
 	private static bool isdetect;
+	private bool move;
 
 	private void Start()
 	{
 		//isdetect = true;
+		anim = ennemi.GetComponent<Animator>();
 	}
 
 	void Update()
 	{
+
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerHealth = player.GetComponent <PlayerController> ();
 		enemyHealth = GetComponent <EnemyHealth> ();
@@ -44,11 +49,20 @@ public class EnemyMovement : MonoBehaviour
 			}
 		}
 
+	
 	[PunRPC]
 	private void enemmymov()
 	{
 
+		anim.SetBool("walk", true);
 		agent.SetDestination(player.transform.position);
 		
+	}
+
+	private void OnTriggerStay(Collider other)
+	{
+		if(other.tag == "Player")
+			anim.SetBool("walk", false);
+
 	}
 }

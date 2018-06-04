@@ -95,13 +95,14 @@ public class SpellController : PlayerStat
 		}
 		if (Input.GetKeyDown(KeyCode.Keypad4))
 		{
-			if (GetComponent<PlayerStat>().Protectiondd == 1)
+			Debug.Log("1");
+			if (PlayerPrefs.GetInt("Proctection") == 1)
 			{
 				if (GetComponent<PlayerController>().energieV >= 25)
 				{
 					Protection = true;
 					TimerP = GetComponent<PlayerStat>().TimerP;
-					defenceS = GetComponent<PlayerStat>().defenceS;
+					spellDefence = GetComponent<PlayerStat>().spellDefence;
 					GetComponent<PlayerController>().energieV -= 25;
 				}
 			}
@@ -195,7 +196,7 @@ public class SpellController : PlayerStat
 		{
 			if (TimerP > 0)
 			{
-				GetComponent<PlayerStat>().defence = defenceS;
+				GetComponent<PlayerStat>().defence = spellDefence;
 			}
 			if(TimerP <= 0)
 			{

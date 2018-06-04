@@ -31,7 +31,7 @@ public class Manager : MonoBehaviour
 		nbPlayer += 1;
 		Vector3 pos = new Vector3(105, 0, 105);
 		Debug.Log("Joined room");
-		GameObject j = PhotonNetwork.Instantiate("Player", posi, Quaternion.identity, 0);
+		GameObject j = PhotonNetwork.Instantiate("PlayerT", posi, Quaternion.identity, 0);
 		j.name = "Player" + nbPlayer;
 		
 		j.GetComponent<PlayerStat>().enabled = true;

@@ -1,0 +1,428 @@
+fileFormatVersion: 2
+guid: 86afd6089d92db944b0f9e91fd12fbbf
+timeCreated: 1528063322
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Anim_HMG
+    100002: Camera001
+    100004: Camera001.Target
+    100006: //RootNode
+    100008: D-13_Arm
+    100010: D-13_Arm 2
+    100012: D-13_Base
+    100014: D-13_Blocker
+    100016: D-13_Bolt 7
+    100018: D-13_Bolt 8
+    100020: D-13_Bottom Light
+    100022: D-13_Bottom Light 2
+    100024: D-13_Bullet_Sender
+    100026: D-13_Bullet_Sender 2
+    100028: D-13_Directors
+    100030: D-13_Directors 1
+    100032: D-13_Directors 2
+    100034: D-13_Directors 3
+    100036: 'D-13_Electric Box '
+    100038: D-13_Electric Box 2
+    100040: D-13_Gun Holder
+    100042: D-13_Gun Holder 2
+    100044: D-13_Gun_Mover
+    100046: D-13_Gun_Mover 2
+    100048: D-13_Halo
+    100050: D-13_Header
+    100052: D-13_Holder
+    100054: D-13_Plasma
+    100056: D-13_Plasma Holder
+    100058: D-13_Plasma Nossels
+    100060: D-13_Plasma Nossels 2
+    100062: D-13_Plasma Veins
+    100064: D-13_Pole
+    100066: D-13_Shoulder
+    100068: D-13_Shoulder 2
+    100070: D-13_Stance
+    100072: D-13_Step00
+    100074: D-13_Step01
+    100076: D-13_Step02
+    100078: D-13_Step03
+    100080: D-13_Step04
+    100082: D-13_Sub-Halo
+    100084: D-13_Sub_Base
+    100086: 'D-13_Support Header '
+    100088: D-13_Support Header 2
+    100090: D-13_Support Stand00
+    100092: D-13_Support Stand02
+    100094: D-13_Support Stand04
+    100096: D-13_Support Stand06
+    100098: D-13_Support Stand08
+    100100: D-13_Support Stand10
+    100102: D-13_Support Stand12
+    100104: D-13_Support Stand14
+    100106: D-13_Support Stand16
+    100108: D-13_Support Stand18
+    100110: D-13_Top Sensor
+    100112: D-13_Top Sensor 2
+    100114: D-13_Twin Barrel
+    100116: D-13_Twin Barrel 2
+    100118: D-13_Twin Barrel 3
+    100120: D-13_Twin Barrel 4
+    100122: D-13_Umbrella
+    100124: D-13_Upper Barrel
+    100126: D-13_Upper Barrel 2
+    100128: D-13_Ventilation
+    100130: D13-HMG_Grp
+    100132: Left_Gun_Grp
+    100134: miAreaLightomni001
+    100136: miAreaLightomni002
+    100138: miAreaLightomni003
+    100140: miAreaLightomni004
+    100142: Plane001
+    100144: Right_Gun_Grp
+    100146: Sky001
+    100148: Turret_Grp
+    400000: Anim_HMG
+    400002: Camera001
+    400004: Camera001.Target
+    400006: //RootNode
+    400008: D-13_Arm
+    400010: D-13_Arm 2
+    400012: D-13_Base
+    400014: D-13_Blocker
+    400016: D-13_Bolt 7
+    400018: D-13_Bolt 8
+    400020: D-13_Bottom Light
+    400022: D-13_Bottom Light 2
+    400024: D-13_Bullet_Sender
+    400026: D-13_Bullet_Sender 2
+    400028: D-13_Directors
+    400030: D-13_Directors 1
+    400032: D-13_Directors 2
+    400034: D-13_Directors 3
+    400036: 'D-13_Electric Box '
+    400038: D-13_Electric Box 2
+    400040: D-13_Gun Holder
+    400042: D-13_Gun Holder 2
+    400044: D-13_Gun_Mover
+    400046: D-13_Gun_Mover 2
+    400048: D-13_Halo
+    400050: D-13_Header
+    400052: D-13_Holder
+    400054: D-13_Plasma
+    400056: D-13_Plasma Holder
+    400058: D-13_Plasma Nossels
+    400060: D-13_Plasma Nossels 2
+    400062: D-13_Plasma Veins
+    400064: D-13_Pole
+    400066: D-13_Shoulder
+    400068: D-13_Shoulder 2
+    400070: D-13_Stance
+    400072: D-13_Step00
+    400074: D-13_Step01
+    400076: D-13_Step02
+    400078: D-13_Step03
+    400080: D-13_Step04
+    400082: D-13_Sub-Halo
+    400084: D-13_Sub_Base
+    400086: 'D-13_Support Header '
+    400088: D-13_Support Header 2
+    400090: D-13_Support Stand00
+    400092: D-13_Support Stand02
+    400094: D-13_Support Stand04
+    400096: D-13_Support Stand06
+    400098: D-13_Support Stand08
+    400100: D-13_Support Stand10
+    400102: D-13_Support Stand12
+    400104: D-13_Support Stand14
+    400106: D-13_Support Stand16
+    400108: D-13_Support Stand18
+    400110: D-13_Top Sensor
+    400112: D-13_Top Sensor 2
+    400114: D-13_Twin Barrel
+    400116: D-13_Twin Barrel 2
+    400118: D-13_Twin Barrel 3
+    400120: D-13_Twin Barrel 4
+    400122: D-13_Umbrella
+    400124: D-13_Upper Barrel
+    400126: D-13_Upper Barrel 2
+    400128: D-13_Ventilation
+    400130: D13-HMG_Grp
+    400132: Left_Gun_Grp
+    400134: miAreaLightomni001
+    400136: miAreaLightomni002
+    400138: miAreaLightomni003
+    400140: miAreaLightomni004
+    400142: Plane001
+    400144: Right_Gun_Grp
+    400146: Sky001
+    400148: Turret_Grp
+    2000000: Camera001
+    2300000: Anim_HMG
+    2300002: D-13_Arm
+    2300004: D-13_Arm 2
+    2300006: D-13_Base
+    2300008: D-13_Blocker
+    2300010: D-13_Bolt 7
+    2300012: D-13_Bolt 8
+    2300014: D-13_Bottom Light
+    2300016: D-13_Bottom Light 2
+    2300018: D-13_Bullet_Sender
+    2300020: D-13_Bullet_Sender 2
+    2300022: D-13_Directors
+    2300024: D-13_Directors 1
+    2300026: D-13_Directors 2
+    2300028: D-13_Directors 3
+    2300030: 'D-13_Electric Box '
+    2300032: D-13_Electric Box 2
+    2300034: D-13_Gun Holder
+    2300036: D-13_Gun Holder 2
+    2300038: D-13_Gun_Mover
+    2300040: D-13_Gun_Mover 2
+    2300042: D-13_Halo
+    2300044: D-13_Header
+    2300046: D-13_Holder
+    2300048: D-13_Plasma
+    2300050: D-13_Plasma Holder
+    2300052: D-13_Plasma Nossels
+    2300054: D-13_Plasma Nossels 2
+    2300056: D-13_Plasma Veins
+    2300058: D-13_Pole
+    2300060: D-13_Shoulder
+    2300062: D-13_Shoulder 2
+    2300064: D-13_Stance
+    2300066: D-13_Step00
+    2300068: D-13_Step01
+    2300070: D-13_Step02
+    2300072: D-13_Step03
+    2300074: D-13_Step04
+    2300076: D-13_Sub-Halo
+    2300078: D-13_Sub_Base
+    2300080: 'D-13_Support Header '
+    2300082: D-13_Support Header 2
+    2300084: D-13_Support Stand00
+    2300086: D-13_Support Stand02
+    2300088: D-13_Support Stand04
+    2300090: D-13_Support Stand06
+    2300092: D-13_Support Stand08
+    2300094: D-13_Support Stand10
+    2300096: D-13_Support Stand12
+    2300098: D-13_Support Stand14
+    2300100: D-13_Support Stand16
+    2300102: D-13_Support Stand18
+    2300104: D-13_Top Sensor
+    2300106: D-13_Top Sensor 2
+    2300108: D-13_Twin Barrel
+    2300110: D-13_Twin Barrel 2
+    2300112: D-13_Twin Barrel 3
+    2300114: D-13_Twin Barrel 4
+    2300116: D-13_Umbrella
+    2300118: D-13_Upper Barrel
+    2300120: D-13_Upper Barrel 2
+    2300122: D-13_Ventilation
+    2300124: Plane001
+    3300000: Anim_HMG
+    3300002: D-13_Arm
+    3300004: D-13_Arm 2
+    3300006: D-13_Base
+    3300008: D-13_Blocker
+    3300010: D-13_Bolt 7
+    3300012: D-13_Bolt 8
+    3300014: D-13_Bottom Light
+    3300016: D-13_Bottom Light 2
+    3300018: D-13_Bullet_Sender
+    3300020: D-13_Bullet_Sender 2
+    3300022: D-13_Directors
+    3300024: D-13_Directors 1
+    3300026: D-13_Directors 2
+    3300028: D-13_Directors 3
+    3300030: 'D-13_Electric Box '
+    3300032: D-13_Electric Box 2
+    3300034: D-13_Gun Holder
+    3300036: D-13_Gun Holder 2
+    3300038: D-13_Gun_Mover
+    3300040: D-13_Gun_Mover 2
+    3300042: D-13_Halo
+    3300044: D-13_Header
+    3300046: D-13_Holder
+    3300048: D-13_Plasma
+    3300050: D-13_Plasma Holder
+    3300052: D-13_Plasma Nossels
+    3300054: D-13_Plasma Nossels 2
+    3300056: D-13_Plasma Veins
+    3300058: D-13_Pole
+    3300060: D-13_Shoulder
+    3300062: D-13_Shoulder 2
+    3300064: D-13_Stance
+    3300066: D-13_Step00
+    3300068: D-13_Step01
+    3300070: D-13_Step02
+    3300072: D-13_Step03
+    3300074: D-13_Step04
+    3300076: D-13_Sub-Halo
+    3300078: D-13_Sub_Base
+    3300080: 'D-13_Support Header '
+    3300082: D-13_Support Header 2
+    3300084: D-13_Support Stand00
+    3300086: D-13_Support Stand02
+    3300088: D-13_Support Stand04
+    3300090: D-13_Support Stand06
+    3300092: D-13_Support Stand08
+    3300094: D-13_Support Stand10
+    3300096: D-13_Support Stand12
+    3300098: D-13_Support Stand14
+    3300100: D-13_Support Stand16
+    3300102: D-13_Support Stand18
+    3300104: D-13_Top Sensor
+    3300106: D-13_Top Sensor 2
+    3300108: D-13_Twin Barrel
+    3300110: D-13_Twin Barrel 2
+    3300112: D-13_Twin Barrel 3
+    3300114: D-13_Twin Barrel 4
+    3300116: D-13_Umbrella
+    3300118: D-13_Upper Barrel
+    3300120: D-13_Upper Barrel 2
+    3300122: D-13_Ventilation
+    3300124: Plane001
+    4300000: Anim_HMG
+    4300002: D-13_Base
+    4300004: D-13_Sub_Base
+    4300006: D-13_Stance
+    4300008: D-13_Support Stand00
+    4300010: D-13_Support Stand02
+    4300012: D-13_Support Stand04
+    4300014: D-13_Support Stand06
+    4300016: D-13_Support Stand08
+    4300018: D-13_Support Stand10
+    4300020: D-13_Support Stand12
+    4300022: D-13_Support Stand14
+    4300024: D-13_Support Stand16
+    4300026: D-13_Support Stand18
+    4300028: D-13_Sub-Halo
+    4300030: D-13_Umbrella
+    4300032: D-13_Halo
+    4300034: D-13_Step04
+    4300036: D-13_Step03
+    4300038: D-13_Step02
+    4300040: D-13_Step01
+    4300042: D-13_Step00
+    4300044: D-13_Blocker
+    4300046: D-13_Pole
+    4300048: D-13_Ventilation
+    4300050: D-13_Gun Holder 2
+    4300052: D-13_Plasma Nossels 2
+    4300054: D-13_Electric Box 2
+    4300056: D-13_Support Header 2
+    4300058: D-13_Holder
+    4300060: D-13_Plasma Nossels
+    4300062: D-13_Plasma Veins
+    4300064: D-13_Directors 3
+    4300066: D-13_Directors 2
+    4300068: D-13_Directors 1
+    4300070: D-13_Directors
+    4300072: D-13_Plasma Holder
+    4300074: 'D-13_Support Header '
+    4300076: 'D-13_Electric Box '
+    4300078: D-13_Gun Holder
+    4300080: D-13_Header
+    4300082: D-13_Plasma
+    4300084: D-13_Bolt 8
+    4300086: D-13_Bullet_Sender 2
+    4300088: D-13_Shoulder 2
+    4300090: D-13_Gun_Mover 2
+    4300092: D-13_Bullet_Sender
+    4300094: D-13_Bolt 7
+    4300096: D-13_Shoulder
+    4300098: D-13_Bottom Light
+    4300100: D-13_Top Sensor
+    4300102: D-13_Gun_Mover
+    4300104: D-13_Upper Barrel 2
+    4300106: D-13_Twin Barrel 4
+    4300108: D-13_Twin Barrel 2
+    4300110: D-13_Arm 2
+    4300112: D-13_Upper Barrel
+    4300114: D-13_Twin Barrel 3
+    4300116: D-13_Twin Barrel
+    4300118: D-13_Arm
+    4300120: D-13_Bottom Light 2
+    4300122: D-13_Top Sensor 2
+    4300124: Plane001
+    9500000: //RootNode
+    10800000: miAreaLightomni001
+    10800002: miAreaLightomni002
+    10800004: miAreaLightomni003
+    10800006: miAreaLightomni004
+    10800008: Sky001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
